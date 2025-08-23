@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ココデザイン - あなたのペースで、新しい一歩を。 | 就労継続支援B型事業所</title>
+    
+    <!-- Tailwind CSSの読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts の読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* カスタムスタイル */
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        /* ヘッダーのナビゲーションリンクのホバーエフェクト */
+        .nav-link {
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background-color: #4f46e5; /* Tailwind indigo-600 */
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ヒーローエリアの画像フェードエフェクト */
+        .hero-image {
+            transition: opacity 2s ease-in-out;
+        }
+
+        /* キャッチコピーのアニメーション用 */
+        .catchphrase-char {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: inline-block;
+        }
+        
+        /* スクロール表示アニメーション用 */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px); /* 少し下から開始 */
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQアコーディオン用 */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .faq-toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.open .faq-toggle-icon {
+            transform: rotate(135deg);
+        }
+        .faq-item.open .q-icon {
+            background-color: #4f46e5; /* indigo-600 */
+            color: white;
+        }
+
+        /* 見学ボタンのアニメーション */
+        @keyframes noticeable-bounce {
+          0%, 100% {
+            transform: translateY(-8%); /* 動きを大きく */
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+          }
+          50% {
+            transform: translateY(0);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+          }
+        }
+        .animate-noticeable-bounce {
+            animation: noticeable-bounce 2s infinite; /* 少し速く */
+        }
+        
+        /* 吹き出しのデザイン */
+        .speech-bubble {
+            position: relative;
+            background-color: white;
+            border-radius: 0.75rem; /* 少し丸みを強く */
+            filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.1));
+        }
+        .speech-bubble-left::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: -20px;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 20px solid white;
+        }
+        .speech-bubble-right::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -20px;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 20px solid white;
+        }
+        /* モバイルでは吹き出しのしっぽを非表示 */
+        @media (max-width: 767px) {
+            .speech-bubble-left::after, .speech-bubble-right::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- ===== ヘッダー ===== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="./index.html" class="text-2xl font-bold text-slate-800">ココデザイン</a>
+            <div class="flex items-center">
+                <nav class="hidden md:flex items-center space-x-4 lg:space-x-6">
+                    <a href="./index.html" class="nav-link text-slate-600 hover:text-indigo-600">TOP</a>
+                    <a href="./work.html" class="nav-link text-slate-600 hover:text-indigo-600">仕事について</a>
+                    <a href="./wage.html" class="nav-link text-slate-600 hover:text-indigo-600">工賃について</a>
+                    <a href="./flow.html" class="nav-link text-slate-600 hover:text-indigo-600">利用までの流れ</a>
+                    <a href="./faq.html" class="nav-link text-slate-600 hover:text-indigo-600">よくある質問</a>
+                    <a href="./access.html" class="nav-link text-slate-600 hover:text-indigo-600">アクセス</a>
+                </nav>
+                <a href="https://lin.ee/SpfieOE" class="hidden md:flex items-center bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300 shadow-md ml-6">
+                    LINEで問い合わせ
+                </a>
+            </div>
+            <button id="menu-btn" class="md:hidden focus:outline-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="./index.html" class="block py-2 px-4 text-sm hover:bg-slate-200">TOP</a>
+            <a href="./work.html" class="block py-2 px-4 text-sm hover:bg-slate-200">仕事について</a>
+            <a href="./wage.html" class="block py-2 px-4 text-sm hover:bg-slate-200">工賃について</a>
+            <a href="./flow.html" class="block py-2 px-4 text-sm hover:bg-slate-200">利用までの流れ</a>
+            <a href="./faq.html" class="block py-2 px-4 text-sm hover:bg-slate-200">よくある質問</a>
+            <a href="./access.html" class="block py-2 px-4 text-sm hover:bg-slate-200">アクセス</a>
+            <div class="p-4">
+                <a href="https://lin.ee/SpfieOE" class="flex justify-center items-center bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300 shadow-md">
+                    LINEで問い合わせ
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== ヒーローエリア ===== -->
+        <section id="top" class="relative h-screen w-full flex flex-col items-center justify-end text-center text-white overflow-hidden pb-20 md:pb-32">
+            <div class="absolute top-0 left-0 w-full h-full">
+                <!-- 1枚目: チーム -->
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1920&auto=format&fit=crop" alt="和やかなチームの風景" class="hero-image absolute w-full h-full object-cover opacity-100">
+                <!-- 2枚目: パソコン -->
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1920&auto=format&fit=crop" alt="集中できるパソコン作業環境" class="hero-image absolute w-full h-full object-cover opacity-0">
+                <!-- 3枚目: 仕事関係 -->
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop" alt="チームでの協力的な作業風景" class="hero-image absolute w-full h-full object-cover opacity-0">
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+            <div id="catchphrase-container" class="relative z-10 px-4">
+                <h1 id="main-catchphrase" class="text-4xl md:text-6xl font-black mb-4 leading-tight" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);"></h1>
+                <p id="sub-catchphrase" class="text-lg md:text-2xl font-light" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);"></p>
+            </div>
+        </section>
+
+        <!-- ===== 支援の方針 ===== -->
+        <section id="policy" class="py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-800">あなたの「働きたい」を、<br class="md:hidden"><span class="text-indigo-600 font-black">3つの安心</span>で支えます。</h2>
+                <p class="text-slate-600 mb-16 max-w-2xl mx-auto">ココデザインは、一人ひとりの個性とペースを尊重します。<br>焦らず、無理なく、あなたらしい一歩を踏み出すための環境がここにあります。</p>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="scroll-reveal bg-slate-50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop" alt="個別サポートのイメージ" class="w-full h-48 object-cover">
+                        <div class="p-8 text-left">
+                            <h3 class="text-xl font-bold mb-3">一人ひとりに寄り添う<br>個別サポート</h3>
+                            <p class="text-slate-600">経験豊富なスタッフがあなたの特性や目標を丁寧にヒアリング。あなただけの支援計画を作成し、日々の業務から将来のステップアップまで、マンツーマンでサポートします。</p>
+                        </div>
+                    </div>
+                    <div class="scroll-reveal bg-slate-50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 0.4s;">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop" alt="多様な仕事のイメージ" class="w-full h-48 object-cover">
+                        <div class="p-8 text-left">
+                            <h3 class="text-xl font-bold mb-3">「好き」や「得意」が見つかる<br>多様な仕事</h3>
+                            <p class="text-slate-600">PCを使ったデータ入力やデザイン作業、軽作業など、様々な種類のお仕事をご用意。あなたの興味やスキルに合わせて、やりがいを感じられる業務にチャレンジできます。</p>
+                        </div>
+                    </div>
+                    <div class="scroll-reveal bg-slate-50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 0.8s;">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600&auto=format&fit=crop" alt="安心できる環境のイメージ" class="w-full h-48 object-cover">
+                        <div class="p-8 text-left">
+                            <h3 class="text-xl font-bold mb-3">週1日・短時間からでも<br>安心できる環境</h3>
+                            <p class="text-slate-600">体調や通院の都合に合わせて、無理のないペースで通所できます。静かで落ち着いた作業スペースや休憩室も完備。まずは「ここにいる」ことから始めましょう。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== こんなお悩みはありませんか？ ===== -->
+        <section id="worries" class="py-24 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-800">こんな<span class="text-indigo-600 font-black">お悩み</span>ありませんか？</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">
+                        一つでも当てはまったら、ぜひ一度ご相談ください。
+                    </p>
+                </div>
+                <div class="space-y-16">
+                    <!-- 悩み 1 & 2 -->
+                    <div class="max-w-5xl mx-auto md:flex items-center justify-center gap-8">
+                        <div class="flex-shrink-0 mb-8 md:mb-0 text-center">
+                            <img src="https://placehold.co/250x250/e0e7ff/4338ca?text=悩む人" alt="悩みを抱える人のイラスト" class="rounded-full w-40 h-40 md:w-56 md:h-56 mx-auto">
+                        </div>
+                        <div class="w-full md:w-1/2 space-y-6">
+                            <div class="scroll-reveal speech-bubble speech-bubble-left p-5">
+                                <p class="text-lg font-bold text-slate-800">働いても工賃が安いから生活が不安...</p>
+                            </div>
+                            <div class="scroll-reveal speech-bubble speech-bubble-left p-5" style="transition-delay: 0.2s;">
+                                <p class="text-lg font-bold text-slate-800">毎日通えるか体力的に心配... 在宅でできる仕事はないかな？</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 悩み 3 & 4 -->
+                    <div class="max-w-5xl mx-auto md:flex flex-row-reverse items-center justify-center gap-8">
+                        <div class="flex-shrink-0 mb-8 md:mb-0 text-center">
+                            <img src="https://placehold.co/250x250/e0e7ff/4338ca?text=考える人" alt="考える人のイラスト" class="rounded-full w-40 h-40 md:w-56 md:h-56 mx-auto">
+                        </div>
+                        <div class="w-full md:w-1/2 space-y-6">
+                            <div class="scroll-reveal speech-bubble speech-bubble-right p-5">
+                                <p class="text-lg font-bold text-slate-800">パソコンスキルに自信がないし、仕事内容が難しそう...</p>
+                            </div>
+                            <div class="scroll-reveal speech-bubble speech-bubble-right p-5" style="transition-delay: 0.2s;">
+                                <p class="text-lg font-bold text-slate-800">やりがいを感じられる仕事で、ちゃんと自立したい</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 解決策 ===== -->
+        <section id="solution" class="py-24 bg-slate-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">そのお悩み、<br class="md:hidden"><span class="text-indigo-400 font-black">ココデザイン</span>が解決します！</h2>
+                <p class="mb-16 max-w-2xl mx-auto text-slate-300">私たちは、あなたの「働きやすさ」と「未来」を本気で考え、<br>他にはない独自のサポート体制を整えています。</p>
+                
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Slider main container -->
+                    <div id="solution-slider-container" class="overflow-hidden">
+                        <!-- Additional required wrapper -->
+                        <div id="solution-slider-wrapper" class="flex transition-transform duration-500 ease-in-out">
+                            <!-- Slides -->
+                            <div class="w-full flex-shrink-0 p-2">
+                                <div class="bg-slate-700 rounded-2xl shadow-lg md:flex overflow-hidden h-full">
+                                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop" alt="高工賃のイメージ" class="w-full md:w-5/12 h-64 md:h-auto object-cover">
+                                    <div class="p-8 md:p-12 flex flex-col justify-center text-left">
+                                        <h3 class="text-3xl lg:text-4xl font-black text-amber-400 mb-4">業界トップクラスの高工賃</h3>
+                                        <p class="text-slate-300 mb-2 text-lg">時給単価<span class="text-4xl lg:text-5xl font-black text-white">350</span><span class="font-bold text-white">円</span></p>
+                                        <p class="text-slate-300 mb-4 text-lg">月間<span class="text-4xl lg:text-5xl font-black text-white">35,000</span><span class="font-bold text-white">円以上</span>も可能！<br><span class="text-sm">※1日5時間、月20日就業の場合</span></p>
+                                        <p class="font-bold text-amber-300">千葉県の令和5年平均20,932円の150%以上！</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full flex-shrink-0 p-2">
+                                <div class="bg-slate-700 rounded-2xl shadow-lg md:flex overflow-hidden h-full">
+                                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800&auto=format&fit=crop" alt="働きやすさのイメージ" class="w-full md:w-5/12 h-64 md:h-auto object-cover">
+                                    <div class="p-8 md:p-12 flex flex-col justify-center text-left">
+                                        <h3 class="text-3xl lg:text-4xl font-black text-sky-400 mb-4">駅チカ好立地 ＆ 在宅OK</h3>
+                                        <p class="text-slate-300 text-lg">船橋市内の駅から<span class="font-bold text-white">徒歩5分</span>圏内。毎日の通勤ストレスを軽減します。体調に合わせて<span class="font-bold text-white">在宅作業も可能</span>です。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full flex-shrink-0 p-2">
+                                <div class="bg-slate-700 rounded-2xl shadow-lg md:flex overflow-hidden h-full">
+                                    <img src="https://images.unsplash.com/photo-1542751371-210c5e054b51?q=80&w=800&auto=format&fit=crop" alt="楽しい作業のイメージ" class="w-full md:w-5/12 h-64 md:h-auto object-cover">
+                                    <div class="p-8 md:p-12 flex flex-col justify-center text-left">
+                                        <h3 class="text-3xl lg:text-4xl font-black text-rose-400 mb-4">好きを仕事にできる</h3>
+                                        <p class="text-slate-300 text-lg">扱う商品は<span class="font-bold text-white">中古ゲーム機</span>や<span class="font-bold text-white">トレカ</span>など親しみやすいものばかり。あなたの「好き」が仕事のモチベーションに繋がります。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full flex-shrink-0 p-2">
+                                <div class="bg-slate-700 rounded-2xl shadow-lg md:flex overflow-hidden h-full">
+                                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&auto=format&fit=crop" alt="自立支援のイメージ" class="w-full md:w-5/12 h-64 md:h-auto object-cover">
+                                    <div class="p-8 md:p-12 flex flex-col justify-center text-left">
+                                        <h3 class="text-3xl lg:text-4xl font-black text-emerald-400 mb-4">ネットショップ運営で「稼ぐ力」を養う</h3>
+                                        <p class="text-slate-300 text-lg">単なる作業で終わらせない。商品知識、PCスキル、マーケティング思考など、<span class="font-bold text-white">実践的なスキル</span>を身につけ、あなたの自立を全力でサポートします。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slider navigation -->
+                    <div id="solution-slider-dots" class="flex justify-center gap-3 mt-8">
+                        <!-- Dots will be generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== よくある質問 ===== -->
+        <section id="faq" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-slate-800">よくある質問</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="faq-item border-b border-slate-200">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-5">
+                            <span class="text-lg font-medium text-slate-800">利用するにはどうすればいいですか？</span>
+                            <span class="faq-toggle-icon text-indigo-500 text-3xl font-light">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="pt-2 pb-5 text-slate-600">まずはお住まいの市区町村の障害福祉窓口にて、障害福祉サービス受給者証の申請が必要です。ご不明な点があれば、申請手続きのサポートも行いますのでお気軽にご相談ください。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item border-b border-slate-200">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-5">
+                            <span class="text-lg font-medium text-slate-800">パソコンを使ったことがないのですが大丈夫ですか？</span>
+                            <span class="faq-toggle-icon text-indigo-500 text-3xl font-light">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="pt-2 pb-5 text-slate-600">はい、大丈夫です。スタッフが電源の入れ方から丁寧にお教えします。WordやExcelの基本操作、デザインソフトの使い方など、あなたのペースに合わせてスキルアップを支援します。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item border-b border-slate-200">
+                        <button class="faq-question w-full flex justify-between items-center text-left py-5">
+                            <span class="text-lg font-medium text-slate-800">週に何日から利用できますか？</span>
+                            <span class="faq-toggle-icon text-indigo-500 text-3xl font-light">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="pt-2 pb-5 text-slate-600">週1日、1日数時間のご利用から可能です。まずは事業所の雰囲気に慣れることから始め、体調や目標に合わせて少しずつ利用日数や時間を増やしていくことができます。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <p class="text-slate-600">その他の質問は<a href="./faq.html" class="text-indigo-600 font-bold hover:underline hover:text-indigo-700">コチラ</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 見学誘導バナー ===== -->
+        <section id="tour-banner" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">まずは、事業所の雰囲気を<br class="md:hidden"><span class="font-black">見に来ませんか？</span></h2>
+                <p class="text-lg mb-8">「どんな場所なんだろう？」「自分に合うかな？」<br>その不安、見学で解消しましょう。</p>
+                <a href="https://lin.ee/SpfieOE" class="inline-block bg-white text-indigo-600 font-bold py-5 px-16 rounded-full text-xl hover:bg-slate-100 transition-all duration-300 shadow-lg transform hover:shadow-xl animate-noticeable-bounce">
+                    見学はこちら
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== フッター ===== -->
+    <footer class="bg-slate-800 text-white">
+        <div class="container mx-auto px-6 py-10">
+            <div class="text-center mb-8">
+                <a href="./index.html" class="text-2xl font-bold text-white">ココデザイン</a>
+                <p class="text-slate-400 text-sm mt-2">
+                    〒123-4567 東京都渋谷区〇〇 1-2-3 | TEL: 03-1234-5678
+                </p>
+            </div>
+            <div class="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-8">
+                <a href="./work.html" class="text-slate-400 hover:text-white">仕事について</a>
+                <a href="./wage.html" class="text-slate-400 hover:text-white">工賃について</a>
+                <a href="./flow.html" class="text-slate-400 hover:text-white">利用までの流れ</a>
+                <a href="./faq.html" class="text-slate-400 hover:text-white">よくある質問</a>
+                <a href="./access.html" class="text-slate-400 hover:text-white">アクセス</a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-700 text-center text-slate-500 text-sm">
+                &copy; 2024 ココデザイン. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ===== ヒーローエリアのスライドショー機能 =====
+            const heroImages = document.querySelectorAll('.hero-image');
+            let currentImageIndex = 0;
+            setInterval(() => {
+                heroImages[currentImageIndex].classList.remove('opacity-100');
+                heroImages[currentImageIndex].classList.add('opacity-0');
+                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+                heroImages[currentImageIndex].classList.remove('opacity-0');
+                heroImages[currentImageIndex].classList.add('opacity-100');
+            }, 7000); // 7秒ごとに切り替え
+
+            // ===== キャッチコピーのアニメーション機能 =====
+            const mainCatchphrase = "ココから始まる、私らしい働き方。";
+            const subCatchphrase = "あなたのペースを大切にする就労継続支援B型事業所";
+            const mainEl = document.getElementById('main-catchphrase');
+            const subEl = document.getElementById('sub-catchphrase');
+
+            function animateText(element, text) {
+                element.innerHTML = text.split('').map(char => `<span class="catchphrase-char">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
+                const chars = element.querySelectorAll('.catchphrase-char');
+                chars.forEach((char, i) => {
+                    setTimeout(() => {
+                        char.style.opacity = '1';
+                        char.style.transform = 'translateY(0)';
+                    }, i * 50 + 500); // 0.5秒後から開始
+                });
+            }
+            animateText(mainEl, mainCatchphrase);
+            setTimeout(() => animateText(subEl, subCatchphrase), mainCatchphrase.length * 50 + 1000);
+
+
+            // ===== モバイルメニューの開閉機能 =====
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('#mobile-menu a');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // リンククリックでメニューを閉じる
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // ===== スクロール表示アニメーション機能 =====
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            scrollElements.forEach(el => observer.observe(el));
+
+            // ===== FAQアコーディオン機能 =====
+            const faqItems = document.querySelectorAll('#faq .faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                question.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+                    
+                    faqItems.forEach(i => {
+                        i.classList.remove('open');
+                        i.querySelector('.faq-answer').style.maxHeight = null;
+                    });
+                    
+                    if (!isOpen) {
+                        item.classList.add('open');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+
+            // ===== 解決策スライダー機能 =====
+            const solutionSection = document.getElementById('solution');
+            const sliderWrapper = document.getElementById('solution-slider-wrapper');
+            if (solutionSection && sliderWrapper) {
+                const slides = sliderWrapper.children;
+                const dotsContainer = document.getElementById('solution-slider-dots');
+                let currentIndex = 0;
+                const slideCount = slides.length;
+                let sliderInterval;
+
+                // スライドの数だけドットを生成
+                for (let i = 0; i < slideCount; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-slate-500', 'transition-colors', 'duration-300');
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+                const dots = dotsContainer.children;
+
+                // スライドを移動させる関数
+                function goToSlide(index) {
+                    sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
+                    currentIndex = index;
+                    updateDots();
+                    resetInterval();
+                }
+
+                // ドットのアクティブ状態を更新する関数
+                function updateDots() {
+                    for (let i = 0; i < slideCount; i++) {
+                        dots[i].classList.toggle('bg-white', i === currentIndex);
+                        dots[i].classList.toggle('bg-slate-500', i !== currentIndex);
+                    }
+                }
+                
+                // 自動再生を開始する関数
+                function startInterval() {
+                    // 既に実行中のインターバルがあればクリア
+                    clearInterval(sliderInterval);
+                    sliderInterval = setInterval(() => {
+                        const nextIndex = (currentIndex + 1) % slideCount;
+                        goToSlide(nextIndex);
+                    }, 3000); // 3秒ごとに切り替え
+                }
+
+                // インターバルを停止する関数
+                function stopInterval() {
+                    clearInterval(sliderInterval);
+                }
+
+                // インターバルをリセットする関数
+                function resetInterval() {
+                    stopInterval();
+                    startInterval();
+                }
+                
+                // 初期状態の設定
+                updateDots();
+
+                // Intersection Observerでスライダーの開始/停止を制御
+                const sliderObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            startInterval();
+                        } else {
+                            stopInterval();
+                        }
+                    });
+                }, { threshold: 0.5 }); // 50%見えたら開始
+
+                sliderObserver.observe(solutionSection);
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+

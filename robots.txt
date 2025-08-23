@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rara-wq.github.io/website/sitemap.xml

@@ -14,12 +14,103 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <style>
+        /* カラーパターンの定義 */
+        :root {
+            /* Primary（ティール） */
+            --primary-500: #32BFB9;
+            --primary-600: #1EA8A2;
+            --primary-700: #057876;
+
+            /* Accent（レモンイエロー） */
+            --accent-400: #FCEDB4;
+            --accent-500: #F8D92E;
+
+            /* Background */
+            --bg-base:     #F7FBFA;
+            --bg-elevated: #FFFFFF;
+            --bg-card:     #FFFFFF;
+            --bg-dark:     #0F2E2E;
+            --bg-darker:   #0A2020;
+
+            /* Text */
+            --text-base:    #223A3A;
+            --text-muted:   #597575;
+            --text-heading: #0F2E2E;
+            --text-inverse: #FFFFFF;
+                        
+            /* その他のUI要素 */
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            
+            /* 追加のカラー定義 */
+            --bg-light-gray: #f8fafc;
+            --bg-medium-gray: #f1f5f9;
+            --text-gray-600: #475569;
+            --text-gray-800: #1e293b;
+            --bg-green-500: #22c55e;
+            --bg-green-600: #16a34a;
+            --bg-hover-light: #f1f5f9;
+        }
+        
         /* カスタムスタイル */
         body {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             scroll-behavior: smooth;
+            background-color: var(--bg-base);
+            color: var(--text-base);
+        }
+        
+        /* CSS変数を使用したカスタムクラス */
+        .text-primary { color: var(--primary-600); }
+        .text-primary-700 { color: var(--primary-700); }
+        .hover\:text-primary:hover { color: var(--primary-600); }
+        .hover\:text-primary-700:hover { color: var(--primary-700); }
+        .bg-primary { background-color: var(--primary-600); }
+        .bg-primary-500 { background-color: var(--primary-500); }
+        .bg-primary-700 { background-color: var(--primary-700); }
+        .bg-primary-gradient { background: linear-gradient(to right, var(--primary-500), var(--primary-700)); }
+        .text-accent { color: var(--accent-400); }
+        .bg-accent { background-color: var(--accent-500); }
+        .bg-accent-400 { background-color: var(--accent-400); }
+        
+        /* 背景とテキストのクラス */
+        .bg-base { background-color: var(--bg-base); }
+        .bg-elevated { background-color: var(--bg-elevated); }
+        .bg-dark { background-color: var(--bg-dark); }
+        .bg-darker { background-color: var(--bg-darker); }
+        
+        .text-base { color: var(--text-base); }
+        .text-muted { color: var(--text-muted); }
+        .text-heading { color: var(--text-heading); }
+        .text-inverse { color: var(--text-inverse); }
+        .text-dark { color: var(--bg-dark); }
+        
+        /* 追加のカラークラス */
+        .bg-light-gray { background-color: var(--bg-light-gray); }
+        .bg-medium-gray { background-color: var(--bg-medium-gray); }
+        .text-gray-600 { color: var(--text-gray-600); }
+        .text-gray-800 { color: var(--text-gray-800); }
+        .bg-green-500 { background-color: var(--bg-green-500); }
+        .bg-green-600 { background-color: var(--bg-green-600); }
+        .hover\:bg-green-600:hover { background-color: var(--bg-green-600); }
+        .hover\:bg-hover-light:hover { background-color: var(--bg-hover-light); }
+        .border-gray-200 { border-color: var(--border); }
+        
+        .border-base { border-color: var(--border); }
+        .shadow-base { box-shadow: 0 4px 6px var(--shadow); }
+        
+        /* ヘッダー */
+        header {
+            background-color: var(--bg-elevated);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        /* フッター */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-inverse);
         }
 
         /* ヘッダーのナビゲーションリンクのホバーエフェクト */
@@ -37,7 +128,7 @@
             height: 2px;
             bottom: -4px;
             left: 50%;
-            background-color: #4f46e5; /* Tailwind indigo-600 */
+            background-color: var(--primary-600);
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
@@ -72,20 +163,22 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body>
 
     <!-- ===== ヘッダー ===== -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-sm shadow-sm">
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="./index.html" class="text-2xl font-bold text-slate-800">ココデザイン</a>
+            <a href="./index.html" class="flex items-center">
+                <img src="./images/ココデザイン_ロゴ_rev.png" alt="ココデザイン" class="h-12 md:h-14 w-auto">
+            </a>
             <div class="flex items-center">
                 <nav class="hidden md:flex items-center space-x-4 lg:space-x-6">
-                    <a href="./index.html" class="nav-link text-slate-600 hover:text-indigo-600">TOP</a>
-                    <a href="./work.html" class="nav-link text-slate-600 hover:text-indigo-600">仕事について</a>
-                    <a href="./wage.html" class="nav-link text-slate-600 hover:text-indigo-600">工賃について</a>
-                    <a href="./flow.html" class="nav-link text-slate-600 hover:text-indigo-600">利用までの流れ</a>
-                    <a href="./faq.html" class="nav-link text-slate-600 hover:text-indigo-600">よくある質問</a>
-                    <a href="./access.html" class="nav-link text-slate-600 hover:text-indigo-600">アクセス</a>
+                    <a href="./index.html" class="nav-link text-base hover:text-primary">TOP</a>
+                    <a href="./work.html" class="nav-link text-base hover:text-primary">仕事について</a>
+                    <a href="./wage.html" class="nav-link text-base hover:text-primary">工賃について</a>
+                    <a href="./flow.html" class="nav-link text-base hover:text-primary">利用までの流れ</a>
+                    <a href="./faq.html" class="nav-link text-base hover:text-primary">よくある質問</a>
+                    <a href="./access.html" class="nav-link text-base hover:text-primary">アクセス</a>
                 </nav>
                 <a href="https://lin.ee/SpfieOE" class="hidden md:flex items-center bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300 shadow-md ml-6">
                     LINEで問い合わせ
@@ -94,12 +187,12 @@
             <button id="menu-btn" class="md:hidden focus:outline-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden">
-            <a href="./index.html" class="block py-2 px-4 text-sm hover:bg-slate-200">TOP</a>
-            <a href="./work.html" class="block py-2 px-4 text-sm hover:bg-slate-200">仕事について</a>
-            <a href="./wage.html" class="block py-2 px-4 text-sm hover:bg-slate-200">工賃について</a>
-            <a href="./flow.html" class="block py-2 px-4 text-sm hover:bg-slate-200">利用までの流れ</a>
-            <a href="./faq.html" class="block py-2 px-4 text-sm hover:bg-slate-200">よくある質問</a>
-            <a href="./access.html" class="block py-2 px-4 text-sm hover:bg-slate-200">アクセス</a>
+            <a href="./index.html" class="block py-2 px-4 text-sm hover:bg-hover-light">TOP</a>
+            <a href="./work.html" class="block py-2 px-4 text-sm hover:bg-hover-light">仕事について</a>
+            <a href="./wage.html" class="block py-2 px-4 text-sm hover:bg-hover-light">工賃について</a>
+            <a href="./flow.html" class="block py-2 px-4 text-sm hover:bg-hover-light">利用までの流れ</a>
+            <a href="./faq.html" class="block py-2 px-4 text-sm hover:bg-hover-light">よくある質問</a>
+            <a href="./access.html" class="block py-2 px-4 text-sm hover:bg-hover-light">アクセス</a>
             <div class="p-4">
                 <a href="https://lin.ee/SpfieOE" class="flex justify-center items-center bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300 shadow-md">
                     LINEで問い合わせ
@@ -176,11 +269,11 @@
         </section>
 
         <!-- ===== 見学誘導バナー ===== -->
-        <section id="tour-banner" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+        <section id="tour-banner" class="bg-primary-gradient text-inverse">
             <div class="container mx-auto px-6 py-20 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">まずは、事業所の雰囲気を<br class="md:hidden"><span class="font-black">見に来ませんか？</span></h2>
                 <p class="text-lg mb-8">「どんな場所なんだろう？」「自分に合うかな？」<br>その不安、見学で解消しましょう。</p>
-                <a href="https://lin.ee/SpfieOE" class="inline-block bg-white text-indigo-600 font-bold py-5 px-16 rounded-full text-xl hover:bg-slate-100 transition-all duration-300 shadow-lg transform hover:shadow-xl animate-noticeable-bounce">
+                <a href="https://lin.ee/SpfieOE" class="inline-block bg-accent-400 text-dark font-bold py-5 px-16 rounded-full text-xl hover:bg-accent transition-all duration-300 shadow-lg transform hover:shadow-xl animate-noticeable-bounce">
                     見学はこちら
                 </a>
             </div>
@@ -188,10 +281,12 @@
     </main>
 
     <!-- ===== フッター ===== -->
-    <footer class="bg-slate-800 text-white">
+    <footer>
         <div class="container mx-auto px-6 py-10">
             <div class="text-center mb-8">
-                <a href="./index.html" class="text-2xl font-bold text-white">ココデザイン</a>
+                <a href="./index.html" class="flex items-center justify-center">
+                    <img src="./images/ココデザイン_ロゴ_rev.png" alt="ココデザイン" class="h-18 md:h-20 w-auto brightness-0 invert">
+                </a>
                 <p class="text-slate-400 text-sm mt-2">
                     〒123-4567 東京都渋谷区〇〇 1-2-3 | TEL: 03-1234-5678
                 </p>

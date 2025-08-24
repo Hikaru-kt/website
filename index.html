@@ -14,12 +14,331 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <style>
+        /* カラーパターンの定義 - 実際に使用される色のみ */
+        :root {
+            /* パターン1: Sunny Breeze - 太陽の明るさと海風の爽やかさをイメージ */
+            
+            /* Primary（ティール） */
+            --primary-500: #32BFB9;  /* メインボタン・リンク（明るく前向き） */
+            --primary-600: #1EA8A2;  /* ホバー/フォーカス：やや濃く */
+            --primary-700: #057876;  /* アクティブ/キービジュアルの締め色 */
+
+            /* Accent（レモンイエロー） */
+            --accent-400: #FCEDB4;   /* やさしい注意喚起・バッジ背景 */
+            --accent-500: #F8D92E;   /* CTAの強調、ハイライト */
+
+            /* Background */
+            --bg-base:     #F7FBFA;  /* 全体の薄いミント系ホワイト */
+            --bg-elevated: #FFFFFF;  /* 浮いた要素（カード等） */
+            --bg-card:     #FFFFFF;  /* 支援制度のカード背景 */
+            --bg-dark:     #0F2E2E;  /* フッター等の暗い背景（深いティール） */
+            --bg-darker:   #0A2020;  /* さらに暗い背景（ヒーロー反転など） */
+
+            /* Text */
+            --text-base:    #223A3A; /* 本文（背景#F7FBFA上でAA可読域） */
+            --text-muted:   #597575; /* 補助テキスト */
+            --text-heading: #0F2E2E; /* 見出し（コントラスト強） */
+            --text-inverse: #FFFFFF; /* 暗背景上の白文字 */
+            
+            /* SOLUTIONエリアのカード見出し個別カラー */
+            --text-card1-heading: #F8D92E; /* オレンジ: 業界トップクラスの高工賃 */
+            --text-card2-heading: #1EA8A2; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
+            --text-card3-heading: #FF7E6B; /* レッド: 好きを仕事にできる */
+            --text-card4-heading: #4FB0C6; /* エメラルド: ネットショップ運営で「稼ぐ力」を養う */
+                        
+            /* その他のUI要素 */
+            --border: #e2e8f0;       /* 境界線の色 */
+            --shadow: rgba(0, 0, 0, 0.1); /* 影の色と透明度 */
+            
+            /* 追加のカラー定義 */
+            --bg-light-gray: #f8fafc;    /* 薄いグレー背景 */
+            --bg-medium-gray: #f1f5f9;   /* 中程度のグレー背景 */
+            --text-gray-600: #475569;    /* グレー600相当のテキスト */
+            --text-gray-800: #1e293b;    /* グレー800相当のテキスト */
+            --bg-green-500: #22c55e;     /* 緑ボタン用 */
+            --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
+            --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
+        }
+        
+        /* パターン2: ナチュラルグリーン - 安心感と成長をイメージする自然な緑系配色 */
+        [data-theme="nature"] {
+            /* メインカラー（エメラルド系）: 自然・健康・成長を表現 */
+            --primary-400: #34d399;  /* 活き活きした緑: セカンダリ */
+            --primary-500: #10b981;  /* 標準緑: 基本ボタン */
+            --primary-600: #059669;  /* 深い緑: メインアクション */
+            --primary-700: #047857;  /* 濃い緑: ホバー状態 */
+            
+            /* アクセントカラー（イエロー系）: 太陽・希望・活力 */
+            --accent-400: #fcd34d;   /* 明るい黄: 注目ポイント */
+            --accent-500: #fbbf24;   /* 標準黄: 重要な要素 */
+            
+            /* 背景色: 自然の安らぎを演出 */
+            --bg-base: #f0fdf4;      /* 薄緑背景: 全体の安らぎ */
+            --bg-elevated: #ffffff;  /* 白: クリーンな浮上要素 */
+            --bg-card: #ffffff;      /* 白: カードの清潔感 */
+            --bg-dark: #14532d;      /* 深緑: フッター背景 */
+            --bg-darker: #052e16;    /* 最深緑: 強いコントラスト */
+            
+            /* テキストカラー: 読みやすさと自然感 */
+            --text-base: #15803d;    /* 緑系本文: 優しい読み心地 */
+            --text-muted: #22c55e;   /* 明緑補助: ソフトな説明文 */
+            --text-heading: #14532d; /* 深緑見出し: 強い存在感 */
+            --text-inverse: #ffffff; /* 白文字: 暗背景用 */
+            
+            /* カード見出し個別カラー */
+            --text-card1-heading: #f97316; /* オレンジ: 業界トップクラスの高工賃 */
+            --text-card2-heading: #8b5cf6; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
+            --text-card3-heading: #ef4444; /* レッド: 好きを仕事にできる */
+            --text-card4-heading: #10b981; /* エメラルド: ネットショップ運営で「稼ぐ力」を養う */
+            
+            /* UI要素: 自然の調和 */
+            --border: #bbf7d0;       /* 薄緑境界: 優しい区切り */
+            --shadow: rgba(34, 197, 94, 0.1); /* 緑系影: 自然な立体感 */
+            
+            /* 追加のカラー定義 */
+            --bg-light-gray: #f0fdf4;    /* 薄い自然背景 */
+            --bg-medium-gray: #dcfce7;   /* 中程度の自然背景 */
+            --text-gray-600: #16a34a;    /* グリーン600相当のテキスト */
+            --text-gray-800: #14532d;    /* グリーン800相当のテキスト */
+            --bg-green-500: #22c55e;     /* 緑ボタン用 */
+            --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
+            --bg-hover-light: #dcfce7;   /* ホバー時の薄い背景 */
+        }
+        
+        /* パターン3: エレガントパープル - 高級感と創造性を表現する紫系配色 */
+        [data-theme="elegant"] {
+            /* メインカラー（パープル系）: 洗練・創造性・高級感を演出 */
+            --primary-400: #c084fc;  /* 鮮やか紫: 美しいセカンダリ */
+            --primary-500: #a855f7;  /* 標準紫: 品格あるボタン */
+            --primary-600: #9333ea;  /* 深い紫: 洗練されたアクション */
+            --primary-700: #7e22ce;  /* 濃い紫: 高級感あるホバー */
+            
+            /* アクセントカラー（オレンジ系）: 温かみと活力をプラス */
+            --accent-400: #fb923c;   /* 明るい橙: 親しみやすさ */
+            --accent-500: #f97316;   /* 標準橙: エネルギッシュ */
+            
+            /* 背景色: エレガンスと清潔感 */
+            --bg-base: #faf5ff;      /* 薄紫背景: 上品な全体感 */
+            --bg-elevated: #ffffff;  /* 純白: 清潔で洗練された要素 */
+            --bg-card: #ffffff;      /* 純白: プレミアムなカード */
+            --bg-dark: #581c87;      /* 深紫: 重厚なフッター */
+            --bg-darker: #3b0764;    /* 最深紫: 高級感ある最暗部 */
+            
+            /* テキストカラー: 読みやすさと品格 */
+            --text-base: #6b21a8;    /* 紫系本文: 上品な読み味 */
+            --text-muted: #9333ea;   /* 明紫補助: 優雅な説明文 */
+            --text-heading: #3b0764; /* 深紫見出し: 威厳ある見出し */
+            --text-inverse: #ffffff; /* 白文字: 暗背景に映える */
+            
+            /* カード見出し個別カラー */
+            --text-card1-heading: #ea580c; /* オレンジ: 業界トップクラスの高工賃 */
+            --text-card2-heading: #7e22ce; /* ディープパープル: 駅チカ好立地 ＆ 在宅OK */
+            --text-card3-heading: #dc2626; /* レッド: 好きを仕事にできる */
+            --text-card4-heading: #047857; /* ティール: ネットショップ運営で「稼ぐ力」を養う */
+            
+            /* UI要素: 洗練された調和 */
+            --border: #e9d5ff;       /* 薄紫境界: エレガントな区切り */
+            --shadow: rgba(147, 51, 234, 0.1); /* 紫系影: 神秘的な立体感 */
+            
+            /* 追加のカラー定義 */
+            --bg-light-gray: #faf5ff;    /* 薄い紫背景 */
+            --bg-medium-gray: #f3e8ff;   /* 中程度の紫背景 */
+            --text-gray-600: #7c3aed;    /* パープル600相当のテキスト */
+            --text-gray-800: #581c87;    /* パープル800相当のテキスト */
+            --bg-green-500: #22c55e;     /* 緑ボタン用 */
+            --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
+            --bg-hover-light: #f3e8ff;   /* ホバー時の薄い背景 */
+        }
+        
+        /* パターン4: ウォームコーラル - 温かみと親しみやすさを表現する暖色系配色 */
+        [data-theme="warm"] {
+            /* メインカラー（コーラル系）: 人間味・温もり・親しみやすさ */
+            --primary-400: #f56565;  /* 鮮やかコーラル: 温かなセカンダリ */
+            --primary-500: #e53e3e;  /* 標準コーラル: 人間味あるボタン */
+            --primary-600: #c53030;  /* 深いコーラル: 情熱的なアクション */
+            --primary-700: #9b2c2c;  /* 濃いコーラル: 温もりあるホバー */
+            
+            /* アクセントカラー（グリーン系）: 安心感と調和をプラス */
+            --accent-400: #48bb78;   /* 明るい緑: 安心できる要素 */
+            --accent-500: #38a169;   /* 標準緑: 信頼感のある強調 */
+            
+            /* 背景色: 温かく居心地の良い空間 */
+            --bg-base: #fffaf0;      /* 暖色背景: 心地よい全体感 */
+            --bg-elevated: #ffffff;  /* 純白: クリーンで暖かい要素 */
+            --bg-card: #ffffff;      /* 純白: 親しみやすいカード */
+            --bg-dark: #742a2a;      /* 深い暖色: 落ち着きあるフッター */
+            --bg-darker: #5a1f1f;    /* 最深暖色: 温もりある最暗部 */
+            
+            /* テキストカラー: 読みやすさと親しみやすさ */
+            --text-base: #742a2a;    /* 暖色本文: 温かな読み心地 */
+            --text-muted: #9b2c2c;   /* 明暖色補助: 優しい説明文 */
+            --text-heading: #5a1f1f; /* 深暖色見出し: 親しみある見出し */
+            --text-inverse: #ffffff; /* 白文字: 暖背景に映える */
+            
+            /* カード見出し個別カラー */
+            --text-card1-heading: #d97706; /* アンバー: 業界トップクラスの高工賃 */
+            --text-card2-heading: #7c2d12; /* ブラウン: 駅チカ好立地 ＆ 在宅OK */
+            --text-card3-heading: #9b2c2c; /* ディープコーラル: 好きを仕事にできる */
+            --text-card4-heading: #38a169; /* グリーン: ネットショップ運営で「稼ぐ力」を養う */
+            
+            /* UI要素: 温かな調和 */
+            --border: #fed7d7;       /* 薄コーラル境界: 優しい区切り */
+            --shadow: rgba(229, 62, 62, 0.1); /* 暖色系影: 温かな立体感 */
+            
+            /* 追加のカラー定義 */
+            --bg-light-gray: #fffaf0;    /* 薄い暖色背景 */
+            --bg-medium-gray: #fef2e2;   /* 中程度の暖色背景 */
+            --text-gray-600: #c53030;    /* 暖色600相当のテキスト */
+            --text-gray-800: #742a2a;    /* 暖色800相当のテキスト */
+            --bg-green-500: #38a169;     /* 緑ボタン用（アクセントカラー） */
+            --bg-green-600: #2f855a;     /* 緑ボタンホバー用 */
+            --bg-hover-light: #fef2e2;   /* ホバー時の薄い背景 */
+        }
+        
+        /* パターン5: モノトーンシック - ミニマリズムと洗練を極めた白黒系配色 */
+        [data-theme="mono"] {
+            /* メインカラー（グレー系）: シンプル・洗練・タイムレス */
+            --primary-400: #9ca3af;  /* ミドルグレー: モダンなセカンダリ */
+            --primary-500: #6b7280;  /* 標準グレー: シンプルなボタン */
+            --primary-600: #4b5563;  /* 深いグレー: 洗練されたアクション */
+            --primary-700: #374151;  /* 濃いグレー: プロフェッショナルなホバー */
+            
+            /* アクセントカラー（アンバー系）: 温かみのあるポイントカラー */
+            --accent-400: #f59e0b;   /* 明るい琥珀: 注意を引く要素 */
+            --accent-500: #d97706;   /* 標準琥珀: 重要な強調 */
+            
+            /* 背景色: クリーンで現代的な空間 */
+            --bg-base: #ffffff;      /* 純白背景: 究極のシンプルさ */
+            --bg-elevated: #f9fafb;  /* 薄グレー: 微細な立体感 */
+            --bg-card: #FCEDB4;      /* 純白: ミニマルなカード */
+            --bg-dark: #1f2937;      /* 暗グレー: コントラストあるフッター */
+            --bg-darker: #111827;    /* 最深グレー: 強烈なコントラスト */
+            
+            /* テキストカラー: 可読性と洗練さの両立 */
+            --text-base: #374151;    /* 濃グレー本文: クリアな読み心地 */
+            --text-muted: #6b7280;   /* 中グレー補助: 控えめな説明文 */
+            --text-heading: #111827; /* 最深グレー見出し: インパクトある見出し */
+            --text-inverse: #ffffff; /* 純白文字: 暗背景に映える */
+            
+            /* カード見出し個別カラー */
+            --text-card1-heading: #d97706; /* アンバー: 業界トップクラスの高工賃 */
+            --text-card2-heading: #7c3aed; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
+            --text-card3-heading: #dc2626; /* レッド: 好きを仕事にできる */
+            --text-card4-heading: #047857; /* ティール: ネットショップ運営で「稼ぐ力」を養う */
+            
+            /* UI要素: ミニマルで機能的 */
+            --border: #e5e7eb;       /* 薄グレー境界: 控えめな区切り */
+            --shadow: rgba(0, 0, 0, 0.1); /* 黒系影: クリーンな立体感 */
+            
+            /* 追加のカラー定義 */
+            --bg-light-gray: #ffffff;    /* 純白背景 */
+            --bg-medium-gray: #f9fafb;   /* 中程度のグレー背景 */
+            --text-gray-600: #6b7280;    /* グレー600相当のテキスト */
+            --text-gray-800: #374151;    /* グレー800相当のテキスト */
+            --bg-green-500: #22c55e;     /* 緑ボタン用 */
+            --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
+            --bg-hover-light: #f3f4f6;   /* ホバー時の薄い背景 */
+        }
+        
         /* カスタムスタイル */
         body {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             scroll-behavior: smooth;
+            background-color: var(--bg-base);
+            color: var(--text-base);
+        }
+        
+        /* CSS変数を使用したカスタムクラス */
+        .text-primary { color: var(--primary-600); }
+        .text-primary-400 { color: var(--primary-400); }
+        .text-primary-700 { color: var(--primary-700); }
+        .hover\:text-primary:hover { color: var(--primary-600); }
+        .hover\:text-primary-700:hover { color: var(--primary-700); }
+        .bg-primary { background-color: var(--primary-600); }
+        .bg-primary-500 { background-color: var(--primary-500); }
+        .bg-primary-700 { background-color: var(--primary-700); }
+        .bg-primary-gradient { background: linear-gradient(to right, var(--primary-500), var(--primary-700)); }
+        .text-accent { color: var(--accent-400); }
+        .bg-accent { background-color: var(--accent-500); }
+        .bg-accent-400 { background-color: var(--accent-400); }
+        
+        /* 背景とテキストのクラス */
+        .bg-base { background-color: var(--bg-base); }
+        .bg-elevated { background-color: var(--bg-elevated); }
+        .bg-card { 
+            background-color: var(--bg-card);
+            border: 2px solid var(--accent-500);
+        }
+        .bg-dark { background-color: var(--bg-dark); }
+        .bg-darker { background-color: var(--bg-darker); }
+        
+        .text-base { color: var(--text-base); }
+        .text-muted { color: var(--text-muted); }
+        .text-heading { color: var(--text-heading); }
+        .text-inverse { color: var(--text-inverse); }
+        .text-dark { color: var(--bg-dark); }
+        
+        .text-card1-heading { color: var(--text-card1-heading); }
+        .text-card2-heading { color: var(--text-card2-heading); }
+        .text-card3-heading { color: var(--text-card3-heading); }
+        .text-card4-heading { color: var(--text-card4-heading); }
+        
+        /* 追加のカラークラス */
+        .bg-light-gray { background-color: var(--bg-light-gray); }
+        .bg-medium-gray { background-color: var(--bg-medium-gray); }
+        .text-gray-600 { color: var(--text-gray-600); }
+        .text-gray-800 { color: var(--text-gray-800); }
+        .bg-green-500 { background-color: var(--bg-green-500); }
+        .bg-green-600 { background-color: var(--bg-green-600); }
+        .hover\:bg-green-600:hover { background-color: var(--bg-green-600); }
+        .hover\:bg-hover-light:hover { background-color: var(--bg-hover-light); }
+        .border-gray-200 { border-color: var(--border); }
+        .bg-muted { background-color: var(--text-muted); }
+        
+        .border-base { border-color: var(--border); }
+        .shadow-base { box-shadow: 0 4px 6px var(--shadow); }
+        
+        /* セクション背景 */
+        section { background-color: var(--bg-base); }
+        .section-elevated { background-color: var(--bg-elevated); }
+        .section-card { background-color: var(--bg-card); }
+        
+        /* カード要素 */
+        .card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--accent-500);
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+        
+        /* カード見出しのアンダーライン */
+        .card-heading-underline {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .card-heading-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-500);
+            opacity: 0.5;
+        }
+        
+        /* ヘッダー */
+        header {
+            background-color: var(--bg-elevated);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        /* フッター */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-inverse);
         }
 
         /* ヘッダーのナビゲーションリンクのホバーエフェクト */
@@ -37,7 +356,7 @@
             height: 2px;
             bottom: -4px;
             left: 50%;
-            background-color: #4f46e5; /* Tailwind indigo-600 */
+            background-color: var(--primary-600);
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
@@ -82,7 +401,7 @@
             transform: rotate(135deg);
         }
         .faq-item.open .q-icon {
-            background-color: #4f46e5; /* indigo-600 */
+            background-color: var(--primary-600);
             color: white;
         }
 
@@ -134,7 +453,28 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body>
+    <!-- カラーパターン切り替えボタン（開発用） -->
+    <div class="fixed bottom-4 right-4 z-50 bg-elevated rounded-lg shadow-lg p-4" style="background: var(--bg-elevated); border: 1px solid var(--border);">
+        <div class="text-sm font-bold mb-3" style="color: var(--text-heading);">カラーパターン:</div>
+        <div class="flex flex-col gap-2">
+            <button onclick="setTheme('')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #4f46e5, #fbbf24); color: white;">
+                <span class="font-bold">Sunny Breeze</span>
+            </button>
+            <button onclick="setTheme('nature')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #059669, #fbbf24); color: white;">
+                <span class="font-bold">ナチュラルグリーン</span>
+            </button>
+            <button onclick="setTheme('elegant')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #9333ea, #f97316); color: white;">
+                <span class="font-bold">エレガントパープル</span>
+            </button>
+            <button onclick="setTheme('warm')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #c53030, #38a169); color: white;">
+                <span class="font-bold">ウォームコーラル</span>
+            </button>
+            <button onclick="setTheme('mono')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #4b5563, #f59e0b); color: white;">
+                <span class="font-bold">モノトーンシック</span>
+            </button>
+        </div>
+    </div>
 
     <!-- ===== ヘッダー ===== -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-sm shadow-sm">
@@ -144,28 +484,28 @@
             </a>
             <div class="flex items-center">
                 <nav class="hidden md:flex items-center space-x-4 lg:space-x-6">
-                    <a href="./index.html" class="nav-link text-slate-600 hover:text-indigo-600">TOP</a>
-                    <a href="./work.html" class="nav-link text-slate-600 hover:text-indigo-600">仕事について</a>
-                    <a href="./wage.html" class="nav-link text-slate-600 hover:text-indigo-600">工賃について</a>
-                    <a href="./flow.html" class="nav-link text-slate-600 hover:text-indigo-600">利用までの流れ</a>
-                    <a href="./faq.html" class="nav-link text-slate-600 hover:text-indigo-600">よくある質問</a>
-                    <a href="./access.html" class="nav-link text-slate-600 hover:text-indigo-600">アクセス</a>
+                    <a href="./index.html" class="nav-link text-base hover:text-primary">TOP</a>
+                    <a href="./work.html" class="nav-link text-base hover:text-primary">仕事について</a>
+                    <a href="./wage.html" class="nav-link text-base hover:text-primary">工賃について</a>
+                    <a href="./flow.html" class="nav-link text-base hover:text-primary">利用までの流れ</a>
+                    <a href="./faq.html" class="nav-link text-base hover:text-primary">よくある質問</a>
+                    <a href="./access.html" class="nav-link text-base hover:text-primary">アクセス</a>
                 </nav>
-                <a href="https://lin.ee/SpfieOE" class="hidden md:flex items-center bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300 shadow-md ml-6">
+                <a href="https://lin.ee/SpfieOE" class="hidden md:flex items-center bg-green-500 text-inverse font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300 shadow-md ml-6">
                     LINEで問い合わせ
                 </a>
             </div>
             <button id="menu-btn" class="md:hidden focus:outline-none"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden">
-            <a href="./index.html" class="block py-2 px-4 text-sm hover:bg-slate-200">TOP</a>
-            <a href="./work.html" class="block py-2 px-4 text-sm hover:bg-slate-200">仕事について</a>
-            <a href="./wage.html" class="block py-2 px-4 text-sm hover:bg-slate-200">工賃について</a>
-            <a href="./flow.html" class="block py-2 px-4 text-sm hover:bg-slate-200">利用までの流れ</a>
-            <a href="./faq.html" class="block py-2 px-4 text-sm hover:bg-slate-200">よくある質問</a>
-            <a href="./access.html" class="block py-2 px-4 text-sm hover:bg-slate-200">アクセス</a>
+            <a href="./index.html" class="block py-2 px-4 text-sm hover:bg-hover-light">TOP</a>
+            <a href="./work.html" class="block py-2 px-4 text-sm hover:bg-hover-light">仕事について</a>
+            <a href="./wage.html" class="block py-2 px-4 text-sm hover:bg-hover-light">工賃について</a>
+            <a href="./flow.html" class="block py-2 px-4 text-sm hover:bg-hover-light">利用までの流れ</a>
+            <a href="./faq.html" class="block py-2 px-4 text-sm hover:bg-hover-light">よくある質問</a>
+            <a href="./access.html" class="block py-2 px-4 text-sm hover:bg-hover-light">アクセス</a>
             <div class="p-4">
-                <a href="https://lin.ee/SpfieOE" class="flex justify-center items-center bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300 shadow-md">
+                <a href="https://lin.ee/SpfieOE" class="flex justify-center items-center bg-green-500 text-inverse font-bold py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-300 shadow-md">
                     LINEで問い合わせ
                 </a>
             </div>
@@ -191,30 +531,30 @@
         </section>
 
         <!-- ===== 支援の方針 ===== -->
-        <section id="policy" class="py-24 bg-white">
+        <section id="policy" class="py-24 section-elevated">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-800">あなたの「働きたい」を、<br class="md:hidden"><span class="text-indigo-600 font-black">3つの安心</span>で支えます。</h2>
-                <p class="text-slate-600 mb-16 max-w-2xl mx-auto">ココデザインは、一人ひとりの個性とペースを尊重します。<br>焦らず、無理なく、あなたらしい一歩を踏み出すための環境がここにあります。</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-heading">あなたの「働きたい」を、<br class="md:hidden"><span class="text-primary font-black">3つの安心</span>で支えます。</h2>
+                <p class="text-muted mb-16 max-w-2xl mx-auto">ココデザインは、一人ひとりの個性とペースを尊重します。<br>焦らず、無理なく、あなたらしい一歩を踏み出すための環境がここにあります。</p>
                 <div class="grid md:grid-cols-3 gap-10">
-                    <div class="scroll-reveal bg-slate-50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="scroll-reveal card rounded-xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
                         <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop" alt="個別サポートのイメージ" class="w-full h-48 object-cover">
                         <div class="p-8 text-left">
-                            <h3 class="text-xl font-bold mb-3">一人ひとりに寄り添う<br>個別サポート</h3>
-                            <p class="text-slate-600">経験豊富なスタッフがあなたの特性や目標を丁寧にヒアリング。あなただけの支援計画を作成し、日々の業務から将来のステップアップまで、マンツーマンでサポートします。</p>
+                            <h3 class="text-xl font-bold mb-3 text-heading card-heading-underline">一人ひとりに寄り添う<br>個別サポート</h3>
+                            <p class="text-base">経験豊富なスタッフがあなたの特性や目標を丁寧にヒアリング。あなただけの支援計画を作成し、日々の業務から将来のステップアップまで、マンツーマンでサポートします。</p>
                         </div>
                     </div>
-                    <div class="scroll-reveal bg-slate-50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 0.4s;">
+                    <div class="scroll-reveal bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 0.4s;">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop" alt="多様な仕事のイメージ" class="w-full h-48 object-cover">
                         <div class="p-8 text-left">
-                            <h3 class="text-xl font-bold mb-3">「好き」や「得意」が見つかる<br>多様な仕事</h3>
-                            <p class="text-slate-600">PCを使ったデータ入力やデザイン作業、軽作業など、様々な種類のお仕事をご用意。あなたの興味やスキルに合わせて、やりがいを感じられる業務にチャレンジできます。</p>
+                            <h3 class="text-xl font-bold mb-3 card-heading-underline">「好き」や「得意」が見つかる<br>多様な仕事</h3>
+                            <p class="text-gray-600">PCを使ったデータ入力やデザイン作業、軽作業など、様々な種類のお仕事をご用意。あなたの興味やスキルに合わせて、やりがいを感じられる業務にチャレンジできます。</p>
                         </div>
                     </div>
-                    <div class="scroll-reveal bg-slate-50 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 0.8s;">
+                    <div class="scroll-reveal card rounded-xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 0.8s;">
                         <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600&auto=format&fit=crop" alt="安心できる環境のイメージ" class="w-full h-48 object-cover">
                         <div class="p-8 text-left">
-                            <h3 class="text-xl font-bold mb-3">週1日・短時間からでも<br>安心できる環境</h3>
-                            <p class="text-slate-600">体調や通院の都合に合わせて、無理のないペースで通所できます。静かで落ち着いた作業スペースや休憩室も完備。まずは「ここにいる」ことから始めましょう。</p>
+                            <h3 class="text-xl font-bold mb-3 text-heading card-heading-underline">週1日・短時間からでも<br>安心できる環境</h3>
+                            <p class="text-base">体調や通院の都合に合わせて、無理のないペースで通所できます。静かで落ち着いた作業スペースや休憩室も完備。まずは「ここにいる」ことから始めましょう。</p>
                         </div>
                     </div>
                 </div>
@@ -222,11 +562,11 @@
         </section>
 
         <!-- ===== こんなお悩みはありませんか？ ===== -->
-        <section id="worries" class="py-24 bg-slate-100">
+        <section id="worries" class="py-24 bg-medium-gray">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-800">こんな<span class="text-indigo-600 font-black">お悩み</span>ありませんか？</h2>
-                    <p class="text-slate-600 max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">こんな<span class="text-primary font-black">お悩み</span>ありませんか？</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
                         一つでも当てはまったら、ぜひ一度ご相談ください。
                     </p>
                 </div>
@@ -238,10 +578,10 @@
                         </div>
                         <div class="w-full md:w-1/2 space-y-6">
                             <div class="scroll-reveal speech-bubble speech-bubble-left p-5">
-                                <p class="text-lg font-bold text-slate-800">働いても工賃が安いから生活が不安...</p>
+                                <p class="text-lg font-bold text-gray-800">働いても工賃が安いから生活が不安...</p>
                             </div>
                             <div class="scroll-reveal speech-bubble speech-bubble-left p-5" style="transition-delay: 0.2s;">
-                                <p class="text-lg font-bold text-slate-800">毎日通えるか体力的に心配... 在宅でできる仕事はないかな？</p>
+                                <p class="text-lg font-bold text-gray-800">毎日通えるか体力的に心配... 在宅でできる仕事はないかな？</p>
                             </div>
                         </div>
                     </div>
@@ -252,10 +592,10 @@
                         </div>
                         <div class="w-full md:w-1/2 space-y-6">
                             <div class="scroll-reveal speech-bubble speech-bubble-right p-5">
-                                <p class="text-lg font-bold text-slate-800">パソコンスキルに自信がないし、仕事内容が難しそう...</p>
+                                <p class="text-lg font-bold text-gray-800">パソコンスキルに自信がないし、仕事内容が難しそう...</p>
                             </div>
                             <div class="scroll-reveal speech-bubble speech-bubble-right p-5" style="transition-delay: 0.2s;">
-                                <p class="text-lg font-bold text-slate-800">やりがいを感じられる仕事で、ちゃんと自立したい</p>
+                                <p class="text-lg font-bold text-gray-800">やりがいを感じられる仕事で、ちゃんと自立したい</p>
                             </div>
                         </div>
                     </div>
@@ -264,10 +604,10 @@
         </section>
 
         <!-- ===== 解決策 ===== -->
-        <section id="solution" class="py-24 bg-slate-800 text-white">
+        <section id="solution" class="py-24 bg-primary-500 text-inverse">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">そのお悩み、<br class="md:hidden"><span class="text-indigo-400 font-black">ココデザイン</span>が解決します！</h2>
-                <p class="mb-16 max-w-2xl mx-auto text-slate-300">私たちは、あなたの「働きやすさ」と「未来」を本気で考え、<br>他にはない独自のサポート体制を整えています。</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">そのお悩み、<br class="md:hidden"><span class="text-primary-400 font-black">ココデザイン</span>が解決します！</h2>
+                <p class="mb-16 max-w-2xl mx-auto text-inverse">私たちは、あなたの「働きやすさ」と「未来」を本気で考え、<br>他にはない独自のサポート体制を整えています。</p>
                 
                 <div class="relative max-w-5xl mx-auto">
                     <!-- Slider main container -->
@@ -276,40 +616,40 @@
                         <div id="solution-slider-wrapper" class="flex transition-transform duration-500 ease-in-out">
                             <!-- Slides -->
                             <div class="w-full flex-shrink-0 p-2">
-                                <div class="bg-slate-700 rounded-2xl shadow-lg md:flex overflow-hidden h-full">
+                                <div class="bg-elevated rounded-2xl shadow-lg md:flex overflow-hidden h-full">
                                     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop" alt="高工賃のイメージ" class="w-full md:w-5/12 h-64 md:h-auto object-cover">
                                     <div class="p-8 md:p-12 flex flex-col justify-center text-left">
-                                        <h3 class="text-3xl lg:text-4xl font-black text-amber-400 mb-4">業界トップクラスの高工賃</h3>
-                                        <p class="text-slate-300 mb-2 text-lg">時給単価<span class="text-4xl lg:text-5xl font-black text-white">350</span><span class="font-bold text-white">円</span></p>
-                                        <p class="text-slate-300 mb-4 text-lg">月間<span class="text-4xl lg:text-5xl font-black text-white">35,000</span><span class="font-bold text-white">円以上</span>も可能！<br><span class="text-sm">※1日5時間、月20日就業の場合</span></p>
-                                        <p class="font-bold text-amber-300">千葉県の令和5年平均20,932円の150%以上！</p>
+                                        <h3 class="text-3xl lg:text-4xl font-black text-card1-heading mb-4">業界トップクラスの高工賃</h3>
+                                        <p class="text-base mb-2 text-lg">時給単価<span class="text-4xl lg:text-5xl font-black text-heading">350</span><span class="font-bold text-heading">円</span></p>
+                                        <p class="text-base mb-4 text-lg">月間<span class="text-4xl lg:text-5xl font-black text-heading">35,000</span><span class="font-bold text-heading">円以上</span>も可能！<br><span class="text-sm">※1日5時間、月20日就業の場合</span></p>
+                                        <p class="font-bold text-muted">千葉県の令和5年平均20,932円の150%以上！</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="w-full flex-shrink-0 p-2">
-                                <div class="bg-slate-700 rounded-2xl shadow-lg md:flex overflow-hidden h-full">
+                                <div class="bg-elevated rounded-2xl shadow-lg md:flex overflow-hidden h-full">
                                     <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800&auto=format&fit=crop" alt="働きやすさのイメージ" class="w-full md:w-5/12 h-64 md:h-auto object-cover">
                                     <div class="p-8 md:p-12 flex flex-col justify-center text-left">
-                                        <h3 class="text-3xl lg:text-4xl font-black text-sky-400 mb-4">駅チカ好立地 ＆ 在宅OK</h3>
-                                        <p class="text-slate-300 text-lg">船橋市内の駅から<span class="font-bold text-white">徒歩5分</span>圏内。毎日の通勤ストレスを軽減します。体調に合わせて<span class="font-bold text-white">在宅作業も可能</span>です。</p>
+                                        <h3 class="text-3xl lg:text-4xl font-black text-card2-heading mb-4">駅チカ好立地 ＆ 在宅OK</h3>
+                                        <p class="text-base text-lg">船橋市内の駅から<span class="font-bold text-heading">徒歩5分</span>圏内。毎日の通勤ストレスを軽減します。体調に合わせて<span class="font-bold text-heading">在宅作業も可能</span>です。</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="w-full flex-shrink-0 p-2">
-                                <div class="bg-slate-700 rounded-2xl shadow-lg md:flex overflow-hidden h-full">
+                                <div class="bg-elevated rounded-2xl shadow-lg md:flex overflow-hidden h-full">
                                     <img src="https://images.unsplash.com/photo-1542751371-210c5e054b51?q=80&w=800&auto=format&fit=crop" alt="楽しい作業のイメージ" class="w-full md:w-5/12 h-64 md:h-auto object-cover">
                                     <div class="p-8 md:p-12 flex flex-col justify-center text-left">
-                                        <h3 class="text-3xl lg:text-4xl font-black text-rose-400 mb-4">好きを仕事にできる</h3>
-                                        <p class="text-slate-300 text-lg">扱う商品は<span class="font-bold text-white">中古ゲーム機</span>や<span class="font-bold text-white">トレカ</span>など親しみやすいものばかり。あなたの「好き」が仕事のモチベーションに繋がります。</p>
+                                        <h3 class="text-3xl lg:text-4xl font-black text-card3-heading mb-4">好きを仕事にできる</h3>
+                                        <p class="text-base text-lg">扱う商品は<span class="font-bold text-heading">中古ゲーム機</span>や<span class="font-bold text-heading">トレカ</span>など親しみやすいものばかり。あなたの「好き」が仕事のモチベーションに繋がります。</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="w-full flex-shrink-0 p-2">
-                                <div class="bg-slate-700 rounded-2xl shadow-lg md:flex overflow-hidden h-full">
+                                <div class="bg-elevated rounded-2xl shadow-lg md:flex overflow-hidden h-full">
                                     <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&auto=format&fit=crop" alt="自立支援のイメージ" class="w-full md:w-5/12 h-64 md:h-auto object-cover">
                                     <div class="p-8 md:p-12 flex flex-col justify-center text-left">
-                                        <h3 class="text-3xl lg:text-4xl font-black text-emerald-400 mb-4">ネットショップ運営で「稼ぐ力」を養う</h3>
-                                        <p class="text-slate-300 text-lg">単なる作業で終わらせない。商品知識、PCスキル、マーケティング思考など、<span class="font-bold text-white">実践的なスキル</span>を身につけ、あなたの自立を全力でサポートします。</p>
+                                        <h3 class="text-3xl lg:text-4xl font-black text-card4-heading mb-4">ネットショップ運営で<br>「稼ぐ力」を養う</h3>
+                                        <p class="text-base text-lg">単なる作業で終わらせない。商品知識、PCスキル、マーケティング思考など、<span class="font-bold text-heading">実践的なスキル</span>を身につけ、あなたの自立を全力でサポートします。</p>
                                     </div>
                                 </div>
                             </div>
@@ -326,48 +666,48 @@
         <!-- ===== よくある質問 ===== -->
         <section id="faq" class="py-24 bg-white">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-slate-800">よくある質問</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">よくある質問</h2>
                 <div class="max-w-3xl mx-auto space-y-4">
-                    <div class="faq-item border-b border-slate-200">
+                    <div class="faq-item border-b border-gray-200">
                         <button class="faq-question w-full flex justify-between items-center text-left py-5">
-                            <span class="text-lg font-medium text-slate-800">利用するにはどうすればいいですか？</span>
-                            <span class="faq-toggle-icon text-indigo-500 text-3xl font-light">+</span>
+                            <span class="text-lg font-medium text-gray-800">利用するにはどうすればいいですか？</span>
+                            <span class="faq-toggle-icon text-primary text-3xl font-light">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p class="pt-2 pb-5 text-slate-600">まずはお住まいの市区町村の障害福祉窓口にて、障害福祉サービス受給者証の申請が必要です。ご不明な点があれば、申請手続きのサポートも行いますのでお気軽にご相談ください。</p>
+                            <p class="pt-2 pb-5 text-gray-600">まずはお住まいの市区町村の障害福祉窓口にて、障害福祉サービス受給者証の申請が必要です。ご不明な点があれば、申請手続きのサポートも行いますのでお気軽にご相談ください。</p>
                         </div>
                     </div>
-                    <div class="faq-item border-b border-slate-200">
+                    <div class="faq-item border-b border-gray-200">
                         <button class="faq-question w-full flex justify-between items-center text-left py-5">
-                            <span class="text-lg font-medium text-slate-800">パソコンを使ったことがないのですが大丈夫ですか？</span>
-                            <span class="faq-toggle-icon text-indigo-500 text-3xl font-light">+</span>
+                            <span class="text-lg font-medium text-gray-800">パソコンを使ったことがないのですが大丈夫ですか？</span>
+                            <span class="faq-toggle-icon text-primary text-3xl font-light">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p class="pt-2 pb-5 text-slate-600">はい、大丈夫です。スタッフが電源の入れ方から丁寧にお教えします。WordやExcelの基本操作、デザインソフトの使い方など、あなたのペースに合わせてスキルアップを支援します。</p>
+                            <p class="pt-2 pb-5 text-gray-600">はい、大丈夫です。スタッフが電源の入れ方から丁寧にお教えします。WordやExcelの基本操作、デザインソフトの使い方など、あなたのペースに合わせてスキルアップを支援します。</p>
                         </div>
                     </div>
-                    <div class="faq-item border-b border-slate-200">
+                    <div class="faq-item border-b border-gray-200">
                         <button class="faq-question w-full flex justify-between items-center text-left py-5">
-                            <span class="text-lg font-medium text-slate-800">週に何日から利用できますか？</span>
-                            <span class="faq-toggle-icon text-indigo-500 text-3xl font-light">+</span>
+                            <span class="text-lg font-medium text-gray-800">週に何日から利用できますか？</span>
+                            <span class="faq-toggle-icon text-primary text-3xl font-light">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p class="pt-2 pb-5 text-slate-600">週1日、1日数時間のご利用から可能です。まずは事業所の雰囲気に慣れることから始め、体調や目標に合わせて少しずつ利用日数や時間を増やしていくことができます。</p>
+                            <p class="pt-2 pb-5 text-gray-600">週1日、1日数時間のご利用から可能です。まずは事業所の雰囲気に慣れることから始め、体調や目標に合わせて少しずつ利用日数や時間を増やしていくことができます。</p>
                         </div>
                     </div>
                 </div>
                 <div class="text-center mt-8">
-                    <p class="text-slate-600">その他の質問は<a href="./faq.html" class="text-indigo-600 font-bold hover:underline hover:text-indigo-700">コチラ</a></p>
+                    <p class="text-gray-600">その他の質問は<a href="./faq.html" class="text-primary font-bold hover:underline hover:text-primary-700">コチラ</a></p>
                 </div>
             </div>
         </section>
 
         <!-- ===== 見学誘導バナー ===== -->
-        <section id="tour-banner" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+        <section id="tour-banner" class="bg-primary-gradient text-white">
             <div class="container mx-auto px-6 py-20 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">まずは、事業所の雰囲気を<br class="md:hidden"><span class="font-black">見に来ませんか？</span></h2>
                 <p class="text-lg mb-8">「どんな場所なんだろう？」「自分に合うかな？」<br>その不安、見学で解消しましょう。</p>
-                <a href="https://lin.ee/SpfieOE" class="inline-block bg-white text-indigo-600 font-bold py-5 px-16 rounded-full text-xl hover:bg-slate-100 transition-all duration-300 shadow-lg transform hover:shadow-xl animate-noticeable-bounce">
+                <a href="https://lin.ee/SpfieOE" class="inline-block bg-accent-400 text-dark font-bold py-5 px-16 rounded-full text-xl hover:bg-accent transition-all duration-300 shadow-lg transform hover:shadow-xl animate-noticeable-bounce">
                     見学はこちら
                 </a>
             </div>
@@ -375,30 +715,47 @@
     </main>
 
     <!-- ===== フッター ===== -->
-    <footer class="bg-slate-800 text-white">
+    <footer>
         <div class="container mx-auto px-6 py-10">
             <div class="text-center mb-8">
                 <a href="./index.html" class="flex items-center justify-center">
                     <img src="./images/ココデザイン_ロゴ_rev.png" alt="ココデザイン" class="h-18 md:h-20 w-auto brightness-0 invert">
                 </a>
-                <p class="text-slate-400 text-sm mt-2">
+                <p class="opacity-70 text-sm mt-2">
                     〒123-4567 東京都渋谷区〇〇 1-2-3 | TEL: 03-1234-5678
                 </p>
             </div>
             <div class="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-8">
-                <a href="./work.html" class="text-slate-400 hover:text-white">仕事について</a>
-                <a href="./wage.html" class="text-slate-400 hover:text-white">工賃について</a>
-                <a href="./flow.html" class="text-slate-400 hover:text-white">利用までの流れ</a>
-                <a href="./faq.html" class="text-slate-400 hover:text-white">よくある質問</a>
-                <a href="./access.html" class="text-slate-400 hover:text-white">アクセス</a>
+                <a href="./work.html" class="opacity-70 hover:opacity-100">仕事について</a>
+                <a href="./wage.html" class="opacity-70 hover:opacity-100">工賃について</a>
+                <a href="./flow.html" class="opacity-70 hover:opacity-100">利用までの流れ</a>
+                <a href="./faq.html" class="opacity-70 hover:opacity-100">よくある質問</a>
+                <a href="./access.html" class="opacity-70 hover:opacity-100">アクセス</a>
             </div>
-            <div class="mt-8 pt-8 border-t border-slate-700 text-center text-slate-500 text-sm">
+            <div class="mt-8 pt-8 border-t border-base text-center opacity-60 text-sm" style="border-color: var(--border);">
                 &copy; 2024 ココデザイン. All Rights Reserved.
             </div>
         </div>
     </footer>
 
     <script>
+        // カラーテーマ切り替え機能
+        function setTheme(theme) {
+            if (theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('selectedTheme', theme);
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.removeItem('selectedTheme');
+            }
+        }
+        
+        // ページ読み込み時に保存されたテーマを適用
+        const savedTheme = localStorage.getItem('selectedTheme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             // ===== ヒーローエリアのスライドショー機能 =====
             const heroImages = document.querySelectorAll('.hero-image');
@@ -489,7 +846,7 @@
                 // スライドの数だけドットを生成
                 for (let i = 0; i < slideCount; i++) {
                     const dot = document.createElement('button');
-                    dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-slate-500', 'transition-colors', 'duration-300');
+                    dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-muted', 'transition-colors', 'duration-300');
                     dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
                     dot.addEventListener('click', () => {
                         goToSlide(i);
@@ -510,7 +867,7 @@
                 function updateDots() {
                     for (let i = 0; i < slideCount; i++) {
                         dots[i].classList.toggle('bg-white', i === currentIndex);
-                        dots[i].classList.toggle('bg-slate-500', i !== currentIndex);
+                        dots[i].classList.toggle('bg-muted', i !== currentIndex);
                     }
                 }
                 

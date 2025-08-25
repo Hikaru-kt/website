@@ -41,7 +41,7 @@
             --text-inverse: #FFFFFF; /* 暗背景上の白文字 */
             
             /* SOLUTIONエリアのカード見出し個別カラー */
-            --text-card1-heading: #F8D92E; /* オレンジ: 業界トップクラスの高工賃 */
+            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
             --text-card2-heading: #1EA8A2; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
             --text-card3-heading: #FF7E6B; /* レッド: 好きを仕事にできる */
             --text-card4-heading: #4FB0C6; /* エメラルド: ネットショップ運営で「稼ぐ力」を養う */
@@ -58,6 +58,7 @@
             --bg-green-500: #22c55e;     /* 緑ボタン用 */
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
+            --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
         }
         
         /* パターン2: ナチュラルグリーン - 安心感と成長をイメージする自然な緑系配色 */
@@ -86,7 +87,7 @@
             --text-inverse: #ffffff; /* 白文字: 暗背景用 */
             
             /* カード見出し個別カラー */
-            --text-card1-heading: #f97316; /* オレンジ: 業界トップクラスの高工賃 */
+            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
             --text-card2-heading: #8b5cf6; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
             --text-card3-heading: #ef4444; /* レッド: 好きを仕事にできる */
             --text-card4-heading: #10b981; /* エメラルド: ネットショップ運営で「稼ぐ力」を養う */
@@ -131,7 +132,7 @@
             --text-inverse: #ffffff; /* 白文字: 暗背景に映える */
             
             /* カード見出し個別カラー */
-            --text-card1-heading: #ea580c; /* オレンジ: 業界トップクラスの高工賃 */
+            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
             --text-card2-heading: #7e22ce; /* ディープパープル: 駅チカ好立地 ＆ 在宅OK */
             --text-card3-heading: #dc2626; /* レッド: 好きを仕事にできる */
             --text-card4-heading: #047857; /* ティール: ネットショップ運営で「稼ぐ力」を養う */
@@ -176,7 +177,7 @@
             --text-inverse: #ffffff; /* 白文字: 暖背景に映える */
             
             /* カード見出し個別カラー */
-            --text-card1-heading: #d97706; /* アンバー: 業界トップクラスの高工賃 */
+            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
             --text-card2-heading: #7c2d12; /* ブラウン: 駅チカ好立地 ＆ 在宅OK */
             --text-card3-heading: #9b2c2c; /* ディープコーラル: 好きを仕事にできる */
             --text-card4-heading: #38a169; /* グリーン: ネットショップ運営で「稼ぐ力」を養う */
@@ -221,7 +222,7 @@
             --text-inverse: #ffffff; /* 純白文字: 暗背景に映える */
             
             /* カード見出し個別カラー */
-            --text-card1-heading: #d97706; /* アンバー: 業界トップクラスの高工賃 */
+            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
             --text-card2-heading: #7c3aed; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
             --text-card3-heading: #dc2626; /* レッド: 好きを仕事にできる */
             --text-card4-heading: #047857; /* ティール: ネットショップ運営で「稼ぐ力」を養う */
@@ -296,6 +297,7 @@
         .hover\:bg-hover-light:hover { background-color: var(--bg-hover-light); }
         .border-gray-200 { border-color: var(--border); }
         .bg-muted { background-color: var(--text-muted); }
+        .text-amber-500 { color: var(--text-amber-500); }
         
         .border-base { border-color: var(--border); }
         .shadow-base { box-shadow: 0 4px 6px var(--shadow); }
@@ -769,20 +771,21 @@
             }, 7000); // 7秒ごとに切り替え
 
             // ===== キャッチコピーのアニメーション機能 =====
-            const mainCatchphrase = "ココから始まる、私らしい働き方。";
+            const mainCatchphrase = "<span class=\"text-accent\">ココ</span>から始まる、私らしい働き方。";
             const subCatchphrase = "あなたのペースを大切にする就労継続支援B型事業所";
             const mainEl = document.getElementById('main-catchphrase');
             const subEl = document.getElementById('sub-catchphrase');
 
             function animateText(element, text) {
-                element.innerHTML = text.split('').map(char => `<span class="catchphrase-char">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
-                const chars = element.querySelectorAll('.catchphrase-char');
-                chars.forEach((char, i) => {
-                    setTimeout(() => {
-                        char.style.opacity = '1';
-                        char.style.transform = 'translateY(0)';
-                    }, i * 50 + 500); // 0.5秒後から開始
-                });
+                // HTMLタグを含む場合は直接設定し、アニメーション効果を適用
+                element.innerHTML = text;
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                    element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                }, 500);
             }
             animateText(mainEl, mainCatchphrase);
             setTimeout(() => animateText(subEl, subCatchphrase), mainCatchphrase.length * 50 + 1000);

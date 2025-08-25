@@ -17,11 +17,13 @@
         /* カラーパターンの定義 */
         :root {
             /* Primary（ティール） */
+            --primary-200: #B4E7E5;  /* 薄いティール: バッジ背景などに使用 */
             --primary-500: #32BFB9;
             --primary-600: #1EA8A2;
             --primary-700: #057876;
 
             /* Accent（レモンイエロー） */
+            --accent-100: #FEF3C7;   /* とても薄いアンバー: 背景用 */
             --accent-400: #FCEDB4;
             --accent-500: #F8D92E;
 
@@ -50,6 +52,7 @@
             --bg-green-500: #22c55e;
             --bg-green-600: #16a34a;
             --bg-hover-light: #f1f5f9;
+            --text-amber-500: #F59E0B;  /* アンバー500: ハイライトテキスト用 */
         }
         
         /* カスタムスタイル */
@@ -64,6 +67,7 @@
         
         /* CSS変数を使用したカスタムクラス */
         .text-primary { color: var(--primary-600); }
+        .text-primary { color: var(--primary-500); }
         .text-primary-700 { color: var(--primary-700); }
         .hover\:text-primary:hover { color: var(--primary-600); }
         .hover\:text-primary-700:hover { color: var(--primary-700); }
@@ -73,6 +77,7 @@
         .bg-primary-gradient { background: linear-gradient(to right, var(--primary-500), var(--primary-700)); }
         .text-accent { color: var(--accent-400); }
         .bg-accent { background-color: var(--accent-500); }
+        .bg-accent-100 { background-color: var(--accent-100); }
         .bg-accent-400 { background-color: var(--accent-400); }
         
         /* 背景とテキストのクラス */
@@ -97,8 +102,10 @@
         .hover\:bg-green-600:hover { background-color: var(--bg-green-600); }
         .hover\:bg-hover-light:hover { background-color: var(--bg-hover-light); }
         .border-gray-200 { border-color: var(--border); }
+        .text-amber-500 { color: var(--text-amber-500); }
         
         .border-base { border-color: var(--border); }
+        .border-accent-100 { border-color: var(--accent-100); }
         .shadow-base { box-shadow: 0 4px 6px var(--shadow); }
         
         /* ヘッダー */
@@ -201,14 +208,14 @@
         </div>
     </header>
 
-    <main>
+    <main class="pt-16">
         <!-- ===== ページヘッダー ===== -->
-        <section class="relative h-64 md:h-80 w-full flex items-center justify-center text-center text-white bg-slate-800">
-            <div class="absolute top-0 left-0 w-full h-full">
+        <section class="relative h-44 md:h-56 w-full bg-slate-800">
+            <div class="absolute inset-0">
                 <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1920&auto=format&fit=crop" alt="工賃のイメージ" class="w-full h-full object-cover opacity-30">
             </div>
-            <div class="relative z-10 px-4">
-                <h1 class="text-4xl md:text-5xl font-black" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">工賃について</h1>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h1 class="text-4xl md:text-5xl font-black text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">工賃について</h1>
             </div>
         </section>
 
@@ -216,18 +223,18 @@
         <section class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center">
-                    <h2 class="inline-block text-3xl md:text-4xl font-bold text-slate-800 pb-2 border-b-4 border-amber-400">業界トップクラスの工賃で、<br class="md:hidden"><span class="text-amber-500 font-black">あなたの頑張り</span>に応えます。</h2>
-                    <p class="text-slate-600 mt-8 mb-16 max-w-2xl mx-auto">私たちは、利用者の皆様の経済的な自立も重要な目標の一つと考えています。ネットショップ運営で得た利益を工賃として適切に還元することで、仕事へのやりがいと生活の安定をサポートします。</p>
+                    <h2 class="inline-block text-3xl md:text-4xl font-bold text-slate-800 pb-2 border-b-4 border-accent-100">業界トップクラスの工賃で、<br class="md:hidden"><span class="text-amber-500 font-black">あなたの頑張り</span>に応えます。</h2>
+                    <p class="text-slate-600 mt-8 mb-16 max-w-2xl mx-auto">私たちは、利用者の皆様の経済的な自立も重要な目標の一つと考えています。<br>ネットショップ運営で得た利益を工賃として適切に還元することで、<br>仕事へのやりがいと生活の安定をサポートします。</p>
                 </div>
                 
                 <div class="max-w-4xl mx-auto bg-slate-50 rounded-2xl shadow-lg p-8 md:p-12 scroll-reveal">
                     <div class="md:flex items-center gap-8">
                         <div class="md:w-1/2 text-center mb-8 md:mb-0">
                             <p class="text-slate-500">時給単価</p>
-                            <p class="text-6xl md:text-7xl font-black text-indigo-600">350<span class="text-3xl">円</span></p>
+                            <p class="text-6xl md:text-7xl font-black text-primary">350<span class="text-3xl">円</span></p>
                             <hr class="my-6 border-slate-200">
                             <p class="text-slate-500">月額工賃例</p>
-                            <p class="text-5xl md:text-6xl font-black text-indigo-600">35,000<span class="text-2xl">円以上</span></p>
+                            <p class="text-5xl md:text-6xl font-black text-primary">35,000<span class="text-2xl">円以上</span></p>
                             <p class="text-sm text-slate-400 mt-2">※1日5時間、月20日就業の場合</p>
                         </div>
                         <div class="md:w-1/2">
@@ -236,14 +243,14 @@
                                 <div class="space-y-4">
                                     <div class="text-center">
                                         <p class="text-sm text-slate-500">ココデザイン</p>
-                                        <p class="text-3xl font-bold text-indigo-600">35,000<span class="text-lg">円</span></p>
+                                        <p class="text-3xl font-bold text-primary">35,000<span class="text-lg">円</span></p>
                                     </div>
                                     <div class="text-center">
                                         <p class="text-sm text-slate-500">千葉県平均（令和5年度）</p>
                                         <p class="text-3xl font-bold text-slate-500">20,932<span class="text-lg">円</span></p>
                                     </div>
                                 </div>
-                                <p class="mt-6 text-center font-bold text-amber-500 bg-amber-100 p-3 rounded">平均の<span class="text-2xl">150</span>%以上！</p>
+                                <p class="mt-6 text-center font-bold text-amber-500 bg-accent-100 p-3 rounded">平均の<span class="text-2xl">150</span>%以上！</p>
                             </div>
                         </div>
                     </div>
@@ -259,8 +266,8 @@
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop" alt="評価制度のイメージ" class="rounded-xl shadow-lg w-full">
                     </div>
                     <div class="md:w-1/2 text-left">
-                        <h2 class="text-3xl md:text-4xl font-black text-slate-800 mb-4">明確な<span class="text-indigo-600">評価制度</span></h2>
-                        <p class="text-slate-600 leading-relaxed text-lg">ココデザインでは、あなたの<strong class="text-slate-700">スキルアップ</strong>や<strong class="text-slate-700">貢献度</strong>を正当に評価し、工賃に反映させるための明確な評価制度を設けています。定期的な面談を通じて目標を設定し、達成度に応じて<strong class="text-indigo-600">工賃がアップ</strong>する仕組みです。あなたの「できること」が増えるたびに、収入も増えていきます。</p>
+                        <h2 class="text-3xl md:text-4xl font-black text-slate-800 mb-4">明確な<span class="text-primary">評価制度</span></h2>
+                        <p class="text-slate-600 leading-relaxed text-lg">ココデザインでは、あなたの<strong class="text-slate-700">スキルアップ</strong>や<strong class="text-slate-700">貢献度</strong>を正当に評価し、工賃に反映させるための明確な評価制度を設けています。定期的な面談を通じて目標を設定し、達成度に応じて<strong class="text-primary">工賃がアップ</strong>する仕組みです。あなたの「できること」が増えるたびに、収入も増えていきます。</p>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@
         /* カラーパターンの定義 */
         :root {
             /* Primary（ティール） */
+            --primary-100: #E0F7F6;  /* とても薄いティール: 背景用 */
             --primary-500: #32BFB9;
             --primary-600: #1EA8A2;
             --primary-700: #057876;
@@ -64,10 +65,12 @@
         
         /* CSS変数を使用したカスタムクラス */
         .text-primary { color: var(--primary-600); }
+        .text-primary-500 { color: var(--primary-500); }
         .text-primary-700 { color: var(--primary-700); }
         .hover\:text-primary:hover { color: var(--primary-600); }
         .hover\:text-primary-700:hover { color: var(--primary-700); }
         .bg-primary { background-color: var(--primary-600); }
+        .bg-primary-100 { background-color: var(--primary-100); }
         .bg-primary-500 { background-color: var(--primary-500); }
         .bg-primary-700 { background-color: var(--primary-700); }
         .bg-primary-gradient { background: linear-gradient(to right, var(--primary-500), var(--primary-700)); }
@@ -149,7 +152,7 @@
             transform: rotate(135deg);
         }
         .faq-item.open .q-icon {
-            background-color: #4f46e5; /* indigo-600 */
+            background-color: var(--primary-600);
             color: white;
         }
         .faq-item.open .faq-question {
@@ -211,14 +214,14 @@
         </div>
     </header>
 
-    <main>
+    <main class="pt-16">
         <!-- ===== ページヘッダー ===== -->
-        <section class="relative h-64 md:h-80 w-full flex items-center justify-center text-center text-white bg-slate-800">
-            <div class="absolute top-0 left-0 w-full h-full">
+        <section class="relative h-44 md:h-56 w-full bg-slate-800">
+            <div class="absolute inset-0">
                 <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=1920&auto=format&fit=crop" alt="よくある質問のイメージ" class="w-full h-full object-cover opacity-30">
             </div>
-            <div class="relative z-10 px-4">
-                <h1 class="text-4xl md:text-5xl font-black" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">よくある質問</h1>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h1 class="text-4xl md:text-5xl font-black text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">よくある質問</h1>
             </div>
         </section>
 
@@ -229,9 +232,9 @@
                     <!-- Q1 -->
                     <div class="faq-item rounded-lg shadow-sm overflow-hidden">
                         <button class="faq-question w-full flex items-center text-left p-6 bg-slate-50 rounded-lg transition-all duration-300">
-                            <span class="q-icon bg-indigo-100 text-indigo-600 text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
+                            <span class="q-icon bg-primary-100 text-primary text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
                             <span class="flex-1 text-lg font-bold text-slate-800">利用するにはどうすればいいですか？</span>
-                            <span class="faq-toggle-icon text-indigo-500 text-4xl font-light ml-4">+</span>
+                            <span class="faq-toggle-icon text-primary-500 text-4xl font-light ml-4">+</span>
                         </button>
                         <div class="faq-answer bg-white border-t-2 border-indigo-200">
                             <p class="text-slate-600 leading-relaxed p-6">まずはお住まいの市区町村の障害福祉窓口にて、障害福祉サービス受給者証の申請が必要です。ご不明な点があれば、申請手続きのサポートも行いますのでお気軽にご相談ください。</p>
@@ -240,9 +243,9 @@
                     <!-- Q2 -->
                     <div class="faq-item rounded-lg shadow-sm overflow-hidden">
                         <button class="faq-question w-full flex items-center text-left p-6 bg-slate-50 rounded-lg transition-all duration-300">
-                            <span class="q-icon bg-indigo-100 text-indigo-600 text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
+                            <span class="q-icon bg-primary-100 text-primary text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
                             <span class="flex-1 text-lg font-bold text-slate-800">パソコンを使ったことがないのですが大丈夫ですか？</span>
-                            <span class="faq-toggle-icon text-indigo-500 text-4xl font-light ml-4">+</span>
+                            <span class="faq-toggle-icon text-primary-500 text-4xl font-light ml-4">+</span>
                         </button>
                         <div class="faq-answer bg-white border-t-2 border-indigo-200">
                             <p class="text-slate-600 leading-relaxed p-6">はい、大丈夫です。スタッフが電源の入れ方から丁寧にお教えします。WordやExcelの基本操作、デザインソフトの使い方など、あなたのペースに合わせてスキルアップを支援します。</p>
@@ -251,9 +254,9 @@
                     <!-- Q3 -->
                     <div class="faq-item rounded-lg shadow-sm overflow-hidden">
                         <button class="faq-question w-full flex items-center text-left p-6 bg-slate-50 rounded-lg transition-all duration-300">
-                            <span class="q-icon bg-indigo-100 text-indigo-600 text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
+                            <span class="q-icon bg-primary-100 text-primary text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
                             <span class="flex-1 text-lg font-bold text-slate-800">週に何日から利用できますか？</span>
-                            <span class="faq-toggle-icon text-indigo-500 text-4xl font-light ml-4">+</span>
+                            <span class="faq-toggle-icon text-primary-500 text-4xl font-light ml-4">+</span>
                         </button>
                         <div class="faq-answer bg-white border-t-2 border-indigo-200">
                             <p class="text-slate-600 leading-relaxed p-6">週1日、1日数時間のご利用から可能です。まずは事業所の雰囲気に慣れることから始め、体調や目標に合わせて少しずつ利用日数や時間を増やしていくことができます。</p>
@@ -262,9 +265,9 @@
                     <!-- Q4 -->
                      <div class="faq-item rounded-lg shadow-sm overflow-hidden">
                         <button class="faq-question w-full flex items-center text-left p-6 bg-slate-50 rounded-lg transition-all duration-300">
-                            <span class="q-icon bg-indigo-100 text-indigo-600 text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
+                            <span class="q-icon bg-primary-100 text-primary text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
                             <span class="flex-1 text-lg font-bold text-slate-800">送迎はありますか？</span>
-                            <span class="faq-toggle-icon text-indigo-500 text-4xl font-light ml-4">+</span>
+                            <span class="faq-toggle-icon text-primary-500 text-4xl font-light ml-4">+</span>
                         </button>
                         <div class="faq-answer bg-white border-t-2 border-indigo-200">
                             <p class="text-slate-600 leading-relaxed p-6">申し訳ございませんが、現在送迎サービスは行っておりません。事業所は駅から徒歩5分圏内とアクセスしやすい場所にありますので、公共交通機関のご利用をお願いしております。</p>
@@ -273,9 +276,9 @@
                     <!-- Q5 -->
                      <div class="faq-item rounded-lg shadow-sm overflow-hidden">
                         <button class="faq-question w-full flex items-center text-left p-6 bg-slate-50 rounded-lg transition-all duration-300">
-                            <span class="q-icon bg-indigo-100 text-indigo-600 text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
+                            <span class="q-icon bg-primary-100 text-primary text-2xl font-bold rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center mr-6 transition-colors duration-300">Q</span>
                             <span class="flex-1 text-lg font-bold text-slate-800">利用料金はかかりますか？</span>
-                            <span class="faq-toggle-icon text-indigo-500 text-4xl font-light ml-4">+</span>
+                            <span class="faq-toggle-icon text-primary-500 text-4xl font-light ml-4">+</span>
                         </button>
                         <div class="faq-answer bg-white border-t-2 border-indigo-200">
                             <p class="text-slate-600 leading-relaxed p-6">障害福祉サービスの利用料は、前年度の世帯収入によって異なりますが、多くの方が無料でご利用されています。詳しくはお住まいの市区町村の障害福祉窓口、または当事業所までお問い合わせください。</p>

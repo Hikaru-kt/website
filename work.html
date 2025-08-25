@@ -100,6 +100,7 @@
         
         .border-base { border-color: var(--border); }
         .border-primary { border-color: var(--primary-700); }
+        .border-accent-400 { border-color: var(--accent-400); }
         .shadow-base { box-shadow: 0 4px 6px var(--shadow); }
         
         /* ヘッダー */
@@ -202,21 +203,21 @@
         </div>
     </header>
 
-    <main>
+    <main class="pt-16">
         <!-- ===== ページヘッダー ===== -->
-        <section class="relative h-64 md:h-80 w-full flex items-center justify-center text-center text-white bg-slate-800">
-            <div class="absolute top-0 left-0 w-full h-full">
+        <section class="relative h-44 md:h-56 w-full bg-slate-800">
+            <div class="absolute inset-0">
                 <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1920&auto=format&fit=crop" alt="仕事のイメージ" class="w-full h-full object-cover opacity-30">
             </div>
-            <div class="relative z-10 px-4">
-                <h1 class="text-4xl md:text-5xl font-black" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">仕事について</h1>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h1 class="text-4xl md:text-5xl font-black text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">仕事について</h1>
             </div>
         </section>
 
         <!-- ===== 仕事内容の紹介 ===== -->
         <section class="py-24 bg-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="inline-block text-3xl md:text-4xl font-bold text-gray-800 pb-2 border-b-4 border-primary">ネットショップ運営で<br class="md:hidden"><span class="text-primary font-black">「好き」</span>と<span class="text-accent font-black">「得意」</span>を仕事に。</h2>
+                <h2 class="inline-block text-3xl md:text-4xl font-bold text-gray-800 pb-2 border-b-4 border-accent-400">ネットショップ運営で<br class="md:hidden"><span class="text-primary font-black">「好き」</span>と<span class="text-accent font-black">「得意」</span>を仕事に。</h2>
                 <p class="text-gray-600 mt-8 mb-16 max-w-2xl mx-auto">ココデザインの主な仕事は、中古ゲーム機やトレーディングカードなどを扱うネットショップの運営です。未経験からでも、あなたのペースに合わせて専門的なスキルを身につけられます。</p>
                 
                 <div class="space-y-20">

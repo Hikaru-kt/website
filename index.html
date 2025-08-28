@@ -8,6 +8,9 @@
     <!-- Tailwind CSSの読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- テーマ切り替え機能 -->
+    <script src="./js/theme-switcher.js"></script>
+    
     <!-- Google Fonts の読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
@@ -61,184 +64,97 @@
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
         }
         
-        /* パターン2: ナチュラルグリーン - 安心感と成長をイメージする自然な緑系配色 */
-        [data-theme="nature"] {
-            /* メインカラー（エメラルド系）: 自然・健康・成長を表現 */
-            --primary-400: #34d399;  /* 活き活きした緑: セカンダリ */
-            --primary-500: #10b981;  /* 標準緑: 基本ボタン */
-            --primary-600: #059669;  /* 深い緑: メインアクション */
-            --primary-700: #047857;  /* 濃い緑: ホバー状態 */
-            
-            /* アクセントカラー（イエロー系）: 太陽・希望・活力 */
-            --accent-400: #fcd34d;   /* 明るい黄: 注目ポイント */
-            --accent-500: #fbbf24;   /* 標準黄: 重要な要素 */
-            
+        /* パターン2: Fresh Lime Green - 爽やかで安心感と成長をイメージする自然な緑系配色 */
+         [data-theme="fresh-lime-green"] {
+            /* メインカラー（グリーン系） */
+            --primary-400: #2bb88a;  /* 爽やかなグリーン */
+            --primary-500: #44c59b;  /* 標準グリーン */
+            --primary-600: #6ccc9d;  /* 柔らかいグリーン */
+            --primary-700: #97d6a6;  /* パステル寄りのグリーン */
+
+            /* アクセントカラー（ライム系） */
+            --accent-400: #c8e6a0;   /* 明るいライムグリーン */
+            --accent-500: #f3f8c9;   /* 淡いイエローグリーン（爽快感） */
+
             /* 背景色: 自然の安らぎを演出 */
-            --bg-base: #f0fdf4;      /* 薄緑背景: 全体の安らぎ */
+            --bg-base: #f6fff5;      /* ごく薄いグリーン */
             --bg-elevated: #ffffff;  /* 白: クリーンな浮上要素 */
             --bg-card: #ffffff;      /* 白: カードの清潔感 */
-            --bg-dark: #14532d;      /* 深緑: フッター背景 */
-            --bg-darker: #052e16;    /* 最深緑: 強いコントラスト */
-            
-            /* テキストカラー: 読みやすさと自然感 */
-            --text-base: #15803d;    /* 緑系本文: 優しい読み心地 */
-            --text-muted: #22c55e;   /* 明緑補助: ソフトな説明文 */
-            --text-heading: #14532d; /* 深緑見出し: 強い存在感 */
+            --bg-dark: #1d4d3c;      /* 深いグリーン: フッター背景 */
+            --bg-darker: #0f2e25;    /* 最深緑: 強いコントラスト */
+
+            /* テキストカラー */
+            --text-base: #2f6f54;    /* 落ち着いたグリーン系本文 */
+            --text-muted: #5fae87;   /* ソフトな補助グリーン */
+            --text-heading: #1d4d3c; /* 深緑見出し: 強調 */
             --text-inverse: #ffffff; /* 白文字: 暗背景用 */
-            
-            /* カード見出し個別カラー */
-            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
-            --text-card2-heading: #8b5cf6; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
-            --text-card3-heading: #ef4444; /* レッド: 好きを仕事にできる */
-            --text-card4-heading: #10b981; /* エメラルド: ネットショップ運営で「稼ぐ力」を養う */
-            
-            /* UI要素: 自然の調和 */
-            --border: #bbf7d0;       /* 薄緑境界: 優しい区切り */
-            --shadow: rgba(34, 197, 94, 0.1); /* 緑系影: 自然な立体感 */
+
+            /* カード見出し個別カラー（差別化は維持） */
+            --text-card1-heading: #2bb88a; /* 爽やかなグリーン */
+            --text-card2-heading: #6ccc9d; /* 柔らかいグリーン */
+            --text-card3-heading: #c8e6a0; /* ライムグリーン */
+            --text-card4-heading: #97d6a6; /* パステルグリーン */
+
+            /* UI要素 */
+            --border: #d5f2dd;       /* 薄緑の境界線 */
+            --shadow: rgba(67, 160, 71, 0.15); /* グリーン系の柔らかい影 */
+
             
             /* 追加のカラー定義 */
-            --bg-light-gray: #f0fdf4;    /* 薄い自然背景 */
-            --bg-medium-gray: #dcfce7;   /* 中程度の自然背景 */
-            --text-gray-600: #16a34a;    /* グリーン600相当のテキスト */
-            --text-gray-800: #14532d;    /* グリーン800相当のテキスト */
+            --bg-light-gray: #f8fafc;    /* 薄いグレー背景 */
+            --bg-medium-gray: #f1f5f9;   /* 中程度のグレー背景 */
+            --text-gray-600: #475569;    /* グレー600相当のテキスト */
+            --text-gray-800: #1e293b;    /* グレー800相当のテキスト */
             --bg-green-500: #22c55e;     /* 緑ボタン用 */
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
-            --bg-hover-light: #dcfce7;   /* ホバー時の薄い背景 */
+            --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
+            --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
         }
         
-        /* パターン3: エレガントパープル - 高級感と創造性を表現する紫系配色 */
-        [data-theme="elegant"] {
-            /* メインカラー（パープル系）: 洗練・創造性・高級感を演出 */
-            --primary-400: #c084fc;  /* 鮮やか紫: 美しいセカンダリ */
-            --primary-500: #a855f7;  /* 標準紫: 品格あるボタン */
-            --primary-600: #9333ea;  /* 深い紫: 洗練されたアクション */
-            --primary-700: #7e22ce;  /* 濃い紫: 高級感あるホバー */
-            
-            /* アクセントカラー（オレンジ系）: 温かみと活力をプラス */
-            --accent-400: #fb923c;   /* 明るい橙: 親しみやすさ */
-            --accent-500: #f97316;   /* 標準橙: エネルギッシュ */
-            
-            /* 背景色: エレガンスと清潔感 */
-            --bg-base: #faf5ff;      /* 薄紫背景: 上品な全体感 */
-            --bg-elevated: #ffffff;  /* 純白: 清潔で洗練された要素 */
-            --bg-card: #ffffff;      /* 純白: プレミアムなカード */
-            --bg-dark: #581c87;      /* 深紫: 重厚なフッター */
-            --bg-darker: #3b0764;    /* 最深紫: 高級感ある最暗部 */
-            
-            /* テキストカラー: 読みやすさと品格 */
-            --text-base: #6b21a8;    /* 紫系本文: 上品な読み味 */
-            --text-muted: #9333ea;   /* 明紫補助: 優雅な説明文 */
-            --text-heading: #3b0764; /* 深紫見出し: 威厳ある見出し */
-            --text-inverse: #ffffff; /* 白文字: 暗背景に映える */
-            
+        /* パターン3: Sunrise Horizon - 朝日の温かさと海の爽やかさをイメージした配色 */
+        [data-theme="sunrise-horizon"] {
+            /* メインカラー（サンシャインイエロー） */
+            --primary-400: #F1BE25;  /* 明るい黄金色: セカンダリ強調 */
+            --primary-500: #F1DCA7;  /* 柔らかいベージュイエロー: 基本ボタン */
+            --primary-600: #DBBD7E;  /* 落ち着きのあるゴールド: メインアクション */
+            --primary-700: #B79C5F;  /* 深みのあるアンバー: ホバー状態 */
+
+            /* アクセントカラー（スカイブルー） */
+            --accent-400: #98BCD5;   /* 爽やかな空色: 補助強調 */
+            --accent-500: #6FA7C4;   /* 少し濃い空色: CTAやリンクに使用 */
+
+            /* 背景色: 明るく開放的な雰囲気 */
+            --bg-base: #EDE9DA;      /* 薄いサンドベージュ: ページ全体 */
+            --bg-elevated: #ffffff;  /* 白: クリーンで見やすい背景 */
+            --bg-card: #FDFBF6;      /* ごく淡いベージュ: カード背景 */
+            --bg-dark: #5E4B2F;      /* 濃いブラウンゴールド: フッター背景 */
+            --bg-darker: #2C2416;    /* 最深ブラウン: 強いコントラスト */
+
+            /* テキストカラー */
+            --text-base: #5E4B2F;    /* ブラウン寄り: 読みやすく落ち着いた本文 */
+            --text-muted: #8C7B5B;   /* 柔らかいベージュ系: サブテキスト */
+            --text-heading: #B79C5F; /* ゴールド寄りの見出し: 高級感を演出 */
+            --text-inverse: #ffffff; /* 白文字: 暗背景用 */
+
             /* カード見出し個別カラー */
-            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
-            --text-card2-heading: #7e22ce; /* ディープパープル: 駅チカ好立地 ＆ 在宅OK */
-            --text-card3-heading: #dc2626; /* レッド: 好きを仕事にできる */
-            --text-card4-heading: #047857; /* ティール: ネットショップ運営で「稼ぐ力」を養う */
-            
-            /* UI要素: 洗練された調和 */
-            --border: #e9d5ff;       /* 薄紫境界: エレガントな区切り */
-            --shadow: rgba(147, 51, 234, 0.1); /* 紫系影: 神秘的な立体感 */
+            --text-card1-heading: #F1BE25; /* サンシャインイエロー */
+            --text-card2-heading: #98BCD5; /* スカイブルー */
+            --text-card3-heading: #DBBD7E; /* ゴールド */
+            --text-card4-heading: #F1DCA7; /* ベージュイエロー */
+
+            /* UI要素 */
+            --border: #EDE9DA;       /* 薄いベージュの境界線 */
+            --shadow: rgba(155, 155, 155, 0.15); /* 柔らかい影（自然光イメージ） */
             
             /* 追加のカラー定義 */
-            --bg-light-gray: #faf5ff;    /* 薄い紫背景 */
-            --bg-medium-gray: #f3e8ff;   /* 中程度の紫背景 */
-            --text-gray-600: #7c3aed;    /* パープル600相当のテキスト */
-            --text-gray-800: #581c87;    /* パープル800相当のテキスト */
+            --bg-light-gray: #f8fafc;    /* 薄いグレー背景 */
+            --bg-medium-gray: #f1f5f9;   /* 中程度のグレー背景 */
+            --text-gray-600: #475569;    /* グレー600相当のテキスト */
+            --text-gray-800: #1e293b;    /* グレー800相当のテキスト */
             --bg-green-500: #22c55e;     /* 緑ボタン用 */
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
-            --bg-hover-light: #f3e8ff;   /* ホバー時の薄い背景 */
-        }
-        
-        /* パターン4: ウォームコーラル - 温かみと親しみやすさを表現する暖色系配色 */
-        [data-theme="warm"] {
-            /* メインカラー（コーラル系）: 人間味・温もり・親しみやすさ */
-            --primary-400: #f56565;  /* 鮮やかコーラル: 温かなセカンダリ */
-            --primary-500: #e53e3e;  /* 標準コーラル: 人間味あるボタン */
-            --primary-600: #c53030;  /* 深いコーラル: 情熱的なアクション */
-            --primary-700: #9b2c2c;  /* 濃いコーラル: 温もりあるホバー */
-            
-            /* アクセントカラー（グリーン系）: 安心感と調和をプラス */
-            --accent-400: #48bb78;   /* 明るい緑: 安心できる要素 */
-            --accent-500: #38a169;   /* 標準緑: 信頼感のある強調 */
-            
-            /* 背景色: 温かく居心地の良い空間 */
-            --bg-base: #fffaf0;      /* 暖色背景: 心地よい全体感 */
-            --bg-elevated: #ffffff;  /* 純白: クリーンで暖かい要素 */
-            --bg-card: #ffffff;      /* 純白: 親しみやすいカード */
-            --bg-dark: #742a2a;      /* 深い暖色: 落ち着きあるフッター */
-            --bg-darker: #5a1f1f;    /* 最深暖色: 温もりある最暗部 */
-            
-            /* テキストカラー: 読みやすさと親しみやすさ */
-            --text-base: #742a2a;    /* 暖色本文: 温かな読み心地 */
-            --text-muted: #9b2c2c;   /* 明暖色補助: 優しい説明文 */
-            --text-heading: #5a1f1f; /* 深暖色見出し: 親しみある見出し */
-            --text-inverse: #ffffff; /* 白文字: 暖背景に映える */
-            
-            /* カード見出し個別カラー */
-            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
-            --text-card2-heading: #7c2d12; /* ブラウン: 駅チカ好立地 ＆ 在宅OK */
-            --text-card3-heading: #9b2c2c; /* ディープコーラル: 好きを仕事にできる */
-            --text-card4-heading: #38a169; /* グリーン: ネットショップ運営で「稼ぐ力」を養う */
-            
-            /* UI要素: 温かな調和 */
-            --border: #fed7d7;       /* 薄コーラル境界: 優しい区切り */
-            --shadow: rgba(229, 62, 62, 0.1); /* 暖色系影: 温かな立体感 */
-            
-            /* 追加のカラー定義 */
-            --bg-light-gray: #fffaf0;    /* 薄い暖色背景 */
-            --bg-medium-gray: #fef2e2;   /* 中程度の暖色背景 */
-            --text-gray-600: #c53030;    /* 暖色600相当のテキスト */
-            --text-gray-800: #742a2a;    /* 暖色800相当のテキスト */
-            --bg-green-500: #38a169;     /* 緑ボタン用（アクセントカラー） */
-            --bg-green-600: #2f855a;     /* 緑ボタンホバー用 */
-            --bg-hover-light: #fef2e2;   /* ホバー時の薄い背景 */
-        }
-        
-        /* パターン5: モノトーンシック - ミニマリズムと洗練を極めた白黒系配色 */
-        [data-theme="mono"] {
-            /* メインカラー（グレー系）: シンプル・洗練・タイムレス */
-            --primary-400: #9ca3af;  /* ミドルグレー: モダンなセカンダリ */
-            --primary-500: #6b7280;  /* 標準グレー: シンプルなボタン */
-            --primary-600: #4b5563;  /* 深いグレー: 洗練されたアクション */
-            --primary-700: #374151;  /* 濃いグレー: プロフェッショナルなホバー */
-            
-            /* アクセントカラー（アンバー系）: 温かみのあるポイントカラー */
-            --accent-400: #f59e0b;   /* 明るい琥珀: 注意を引く要素 */
-            --accent-500: #d97706;   /* 標準琥珀: 重要な強調 */
-            
-            /* 背景色: クリーンで現代的な空間 */
-            --bg-base: #ffffff;      /* 純白背景: 究極のシンプルさ */
-            --bg-elevated: #f9fafb;  /* 薄グレー: 微細な立体感 */
-            --bg-card: #FCEDB4;      /* 純白: ミニマルなカード */
-            --bg-dark: #1f2937;      /* 暗グレー: コントラストあるフッター */
-            --bg-darker: #111827;    /* 最深グレー: 強烈なコントラスト */
-            
-            /* テキストカラー: 可読性と洗練さの両立 */
-            --text-base: #374151;    /* 濃グレー本文: クリアな読み心地 */
-            --text-muted: #6b7280;   /* 中グレー補助: 控えめな説明文 */
-            --text-heading: #111827; /* 最深グレー見出し: インパクトある見出し */
-            --text-inverse: #ffffff; /* 純白文字: 暗背景に映える */
-            
-            /* カード見出し個別カラー */
-            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
-            --text-card2-heading: #7c3aed; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
-            --text-card3-heading: #dc2626; /* レッド: 好きを仕事にできる */
-            --text-card4-heading: #047857; /* ティール: ネットショップ運営で「稼ぐ力」を養う */
-            
-            /* UI要素: ミニマルで機能的 */
-            --border: #e5e7eb;       /* 薄グレー境界: 控えめな区切り */
-            --shadow: rgba(0, 0, 0, 0.1); /* 黒系影: クリーンな立体感 */
-            
-            /* 追加のカラー定義 */
-            --bg-light-gray: #ffffff;    /* 純白背景 */
-            --bg-medium-gray: #f9fafb;   /* 中程度のグレー背景 */
-            --text-gray-600: #6b7280;    /* グレー600相当のテキスト */
-            --text-gray-800: #374151;    /* グレー800相当のテキスト */
-            --bg-green-500: #22c55e;     /* 緑ボタン用 */
-            --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
-            --bg-hover-light: #f3f4f6;   /* ホバー時の薄い背景 */
+            --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
+            --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
         }
         
         /* カスタムスタイル */
@@ -460,20 +376,14 @@
     <div class="fixed bottom-4 right-4 z-50 bg-elevated rounded-lg shadow-lg p-4" style="background: var(--bg-elevated); border: 1px solid var(--border);">
         <div class="text-sm font-bold mb-3" style="color: var(--text-heading);">カラーパターン:</div>
         <div class="flex flex-col gap-2">
-            <button onclick="setTheme('')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #4f46e5, #fbbf24); color: white;">
+            <button onclick="setTheme('')" data-theme-button="" class="px-3 py-2 rounded text-left hover:opacity-80 transition-all" style="background: linear-gradient(135deg, #32BFB9, #F8D92E); color: white;">
                 <span class="font-bold">Sunny Breeze</span>
             </button>
-            <button onclick="setTheme('nature')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #059669, #fbbf24); color: white;">
-                <span class="font-bold">ナチュラルグリーン</span>
+            <button onclick="setTheme('fresh-lime-green')" data-theme-button="fresh-lime-green" class="px-3 py-2 rounded text-left hover:opacity-80 transition-all" style="background: linear-gradient(135deg, #44c59b, #c8e6a0); color: white;">
+                <span class="font-bold">Fresh Lime Green</span>
             </button>
-            <button onclick="setTheme('elegant')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #9333ea, #f97316); color: white;">
-                <span class="font-bold">エレガントパープル</span>
-            </button>
-            <button onclick="setTheme('warm')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #c53030, #38a169); color: white;">
-                <span class="font-bold">ウォームコーラル</span>
-            </button>
-            <button onclick="setTheme('mono')" class="px-3 py-2 rounded text-left hover:opacity-80 transition-opacity" style="background: linear-gradient(135deg, #4b5563, #f59e0b); color: white;">
-                <span class="font-bold">モノトーンシック</span>
+            <button onclick="setTheme('sunrise-horizon')" data-theme-button="sunrise-horizon" class="px-3 py-2 rounded text-left hover:opacity-80 transition-all" style="background: linear-gradient(135deg, #F1BE25, #98BCD5); color: white;">
+                <span class="font-bold">Sunrise Horizon</span>
             </button>
         </div>
     </div>
@@ -741,23 +651,6 @@
     </footer>
 
     <script>
-        // カラーテーマ切り替え機能
-        function setTheme(theme) {
-            if (theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('selectedTheme', theme);
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.removeItem('selectedTheme');
-            }
-        }
-        
-        // ページ読み込み時に保存されたテーマを適用
-        const savedTheme = localStorage.getItem('selectedTheme');
-        if (savedTheme) {
-            setTheme(savedTheme);
-        }
-        
         document.addEventListener('DOMContentLoaded', function() {
             // ===== ヒーローエリアのスライドショー機能 =====
             const heroImages = document.querySelectorAll('.hero-image');

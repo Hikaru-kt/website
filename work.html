@@ -8,48 +8,140 @@
     <!-- Tailwind CSSの読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- テーマ切り替え機能 -->
+    <script src="./js/theme-switcher.js"></script>
+    
     <!-- Google Fonts の読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* カラーパターンの定義 */
+        /* カラーパターンの定義 - 実際に使用される色のみ */
         :root {
+            /* パターン1: Sunny Breeze - 太陽の明るさと海風の爽やかさをイメージ */
+            
             /* Primary（ティール） */
-            --primary-500: #32BFB9;
-            --primary-600: #1EA8A2;
-            --primary-700: #057876;
+            --primary-500: #32BFB9;  /* メインボタン・リンク（明るく前向き） */
+            --primary-600: #1EA8A2;  /* ホバー/フォーカス：やや濃く */
+            --primary-700: #057876;  /* アクティブ/キービジュアルの締め色 */
 
             /* Accent（レモンイエロー） */
-            --accent-400: #FCEDB4;
-            --accent-500: #F8D92E;
+            --accent-400: #FCEDB4;   /* やさしい注意喚起・バッジ背景 */
+            --accent-500: #F8D92E;   /* CTAの強調、ハイライト */
 
             /* Background */
-            --bg-base:     #F7FBFA;
-            --bg-elevated: #FFFFFF;
-            --bg-card:     #FFFFFF;
-            --bg-dark:     #0F2E2E;
-            --bg-darker:   #0A2020;
+            --bg-base:     #F7FBFA;  /* 全体の薄いミント系ホワイト */
+            --bg-elevated: #FFFFFF;  /* 浮いた要素（カード等） */
+            --bg-card:     #FFFFFF;  /* 支援制度のカード背景 */
+            --bg-dark:     #0F2E2E;  /* フッター等の暗い背景（深いティール） */
+            --bg-darker:   #0A2020;  /* さらに暗い背景（ヒーロー反転など） */
 
             /* Text */
-            --text-base:    #223A3A;
-            --text-muted:   #597575;
-            --text-heading: #0F2E2E;
-            --text-inverse: #FFFFFF;
+            --text-base:    #223A3A; /* 本文（背景#F7FBFA上でAA可読域） */
+            --text-muted:   #597575; /* 補助テキスト */
+            --text-heading: #0F2E2E; /* 見出し（コントラスト強） */
+            --text-inverse: #FFFFFF; /* 暗背景上の白文字 */
+            
+            /* SOLUTIONエリアのカード見出し個別カラー */
+            --text-card1-heading: #F59E0B; /* アンバー500: 業界トップクラスの高工賃 */
+            --text-card2-heading: #1EA8A2; /* バイオレット: 駅チカ好立地 ＆ 在宅OK */
+            --text-card3-heading: #FF7E6B; /* レッド: 好きを仕事にできる */
+            --text-card4-heading: #4FB0C6; /* エメラルド: ネットショップ運営で「稼ぐ力」を養う */
                         
             /* その他のUI要素 */
-            --border: #e2e8f0;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --border: #e2e8f0;       /* 境界線の色 */
+            --shadow: rgba(0, 0, 0, 0.1); /* 影の色と透明度 */
             
             /* 追加のカラー定義 */
-            --bg-light-gray: #f8fafc;
-            --bg-medium-gray: #f1f5f9;
-            --text-gray-600: #475569;
-            --text-gray-800: #1e293b;
-            --bg-green-500: #22c55e;
-            --bg-green-600: #16a34a;
-            --bg-hover-light: #f1f5f9;
+            --bg-light-gray: #f8fafc;    /* 薄いグレー背景 */
+            --bg-medium-gray: #f1f5f9;   /* 中程度のグレー背景 */
+            --text-gray-600: #475569;    /* グレー600相当のテキスト */
+            --text-gray-800: #1e293b;    /* グレー800相当のテキスト */
+            --bg-green-500: #22c55e;     /* 緑ボタン用 */
+            --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
+            --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
+            --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
+        }
+        
+        /* パターン2: Fresh Lime Green - 爽やかで安心感と成長をイメージする自然な緑系配色 */
+        [data-theme="fresh-lime-green"] {
+            /* メインカラー（グリーン系） */
+            --primary-400: #2bb88a;  /* 爽やかなグリーン */
+            --primary-500: #44c59b;  /* 標準グリーン */
+            --primary-600: #6ccc9d;  /* 柔らかいグリーン */
+            --primary-700: #97d6a6;  /* パステル寄りのグリーン */
+
+            /* アクセントカラー（ライム系） */
+            --accent-400: #c8e6a0;   /* 明るいライムグリーン */
+            --accent-500: #f3f8c9;   /* 淡いイエローグリーン（爽快感） */
+
+            /* 背景色: 自然の安らぎを演出 */
+            --bg-base: #f6fff5;      /* ごく薄いグリーン */
+            --bg-elevated: #ffffff;  /* 白: クリーンな浮上要素 */
+            --bg-card: #ffffff;      /* 白: カードの清潔感 */
+            --bg-dark: #1d4d3c;      /* 深いグリーン: フッター背景 */
+            --bg-darker: #0f2e25;    /* 最深緑: 強いコントラスト */
+
+            /* テキストカラー */
+            --text-base: #2f6f54;    /* 落ち着いたグリーン系本文 */
+            --text-muted: #5fae87;   /* ソフトな補助グリーン */
+            --text-heading: #1d4d3c; /* 深緑見出し: 強調 */
+            --text-inverse: #ffffff; /* 白文字: 暗背景用 */
+
+            /* UI要素 */
+            --border: #d5f2dd;       /* 薄緑の境界線 */
+            --shadow: rgba(67, 160, 71, 0.15); /* グリーン系の柔らかい影 */
+            
+            /* 追加のカラー定義 */
+            --bg-light-gray: #f8fafc;    /* 薄いグレー背景 */
+            --bg-medium-gray: #f1f5f9;   /* 中程度のグレー背景 */
+            --text-gray-600: #475569;    /* グレー600相当のテキスト */
+            --text-gray-800: #1e293b;    /* グレー800相当のテキスト */
+            --bg-green-500: #22c55e;     /* 緑ボタン用 */
+            --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
+            --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
+            --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
+        }
+        
+        /* パターン3: Sunrise Horizon - 朝日の温かさと海の爽やかさをイメージした配色 */
+        [data-theme="sunrise-horizon"] {
+            /* メインカラー（サンシャインイエロー） */
+            --primary-400: #F1BE25;  /* 明るい黄金色: セカンダリ強調 */
+            --primary-500: #F1DCA7;  /* 柔らかいベージュイエロー: 基本ボタン */
+            --primary-600: #DBBD7E;  /* 落ち着きのあるゴールド: メインアクション */
+            --primary-700: #B79C5F;  /* 深みのあるアンバー: ホバー状態 */
+
+            /* アクセントカラー（スカイブルー） */
+            --accent-400: #98BCD5;   /* 爽やかな空色: 補助強調 */
+            --accent-500: #6FA7C4;   /* 少し濃い空色: CTAやリンクに使用 */
+
+            /* 背景色: 明るく開放的な雰囲気 */
+            --bg-base: #EDE9DA;      /* 薄いサンドベージュ: ページ全体 */
+            --bg-elevated: #ffffff;  /* 白: クリーンで見やすい背景 */
+            --bg-card: #FDFBF6;      /* ごく淡いベージュ: カード背景 */
+            --bg-dark: #5E4B2F;      /* 濃いブラウンゴールド: フッター背景 */
+            --bg-darker: #2C2416;    /* 最深ブラウン: 強いコントラスト */
+
+            /* テキストカラー */
+            --text-base: #5E4B2F;    /* ブラウン寄り: 読みやすく落ち着いた本文 */
+            --text-muted: #8C7B5B;   /* 柔らかいベージュ系: サブテキスト */
+            --text-heading: #B79C5F; /* ゴールド寄りの見出し: 高級感を演出 */
+            --text-inverse: #ffffff; /* 白文字: 暗背景用 */
+
+            /* UI要素 */
+            --border: #EDE9DA;       /* 薄いベージュの境界線 */
+            --shadow: rgba(155, 155, 155, 0.15); /* 柔らかい影（自然光イメージ） */
+            
+            /* 追加のカラー定義 */
+            --bg-light-gray: #f8fafc;    /* 薄いグレー背景 */
+            --bg-medium-gray: #f1f5f9;   /* 中程度のグレー背景 */
+            --text-gray-600: #475569;    /* グレー600相当のテキスト */
+            --text-gray-800: #1e293b;    /* グレー800相当のテキスト */
+            --bg-green-500: #22c55e;     /* 緑ボタン用 */
+            --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
+            --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
+            --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
         }
         
         /* カスタムスタイル */
@@ -101,6 +193,7 @@
         .border-base { border-color: var(--border); }
         .border-primary { border-color: var(--primary-700); }
         .border-accent-400 { border-color: var(--accent-400); }
+        .text-amber-500 { color: var(--text-amber-500); }
         .shadow-base { box-shadow: 0 4px 6px var(--shadow); }
         
         /* ヘッダー */

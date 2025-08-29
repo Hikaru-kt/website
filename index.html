@@ -282,10 +282,6 @@
             width: 100%;
         }
 
-        /* ヒーローエリアの画像フェードエフェクト */
-        .hero-image {
-            transition: opacity 2s ease-in-out;
-        }
 
         /* キャッチコピーのアニメーション用 */
         .catchphrase-char {
@@ -426,19 +422,14 @@
 
     <main>
         <!-- ===== ヒーローエリア ===== -->
-        <section id="top" class="relative h-screen w-full flex flex-col items-center justify-end text-center text-white overflow-hidden pb-20 md:pb-32">
+        <section id="top" class="relative h-screen w-full flex flex-col items-center justify-start text-center text-white overflow-hidden pt-32 md:pt-40">
             <div class="absolute top-0 left-0 w-full h-full">
-                <!-- 1枚目: チーム -->
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1920&auto=format&fit=crop" alt="和やかなチームの風景" class="hero-image absolute w-full h-full object-cover opacity-100">
-                <!-- 2枚目: パソコン -->
-                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1920&auto=format&fit=crop" alt="集中できるパソコン作業環境" class="hero-image absolute w-full h-full object-cover opacity-0">
-                <!-- 3枚目: 仕事関係 -->
-                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920&auto=format&fit=crop" alt="チームでの協力的な作業風景" class="hero-image absolute w-full h-full object-cover opacity-0">
+                <!-- メインビジュアル -->
+                <img src="./images/main.png" alt="ココデザインのメインビジュアル" class="absolute w-full h-full object-cover">
             </div>
-            <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
             <div id="catchphrase-container" class="relative z-10 px-4">
                 <h1 id="main-catchphrase" class="text-4xl md:text-6xl font-black mb-4 leading-tight" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);"></h1>
-                <p id="sub-catchphrase" class="text-lg md:text-2xl font-light" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);"></p>
+                <p id="sub-catchphrase" class="text-lg md:text-2xl font-light" style="color: var(--primary-700);"></p>
             </div>
         </section>
 
@@ -449,21 +440,27 @@
                 <p class="text-muted mb-16 max-w-2xl mx-auto">ココデザインは、一人ひとりの個性とペースを尊重します。<br>焦らず、無理なく、あなたらしい一歩を踏み出すための環境がここにあります。</p>
                 <div class="grid md:grid-cols-3 gap-10">
                     <div class="scroll-reveal card rounded-xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop" alt="個別サポートのイメージ" class="w-full h-48 object-cover">
+                        <div class="w-full h-48" style="background-color: #d3ece7;">
+                            <img src="./images/individual.png" alt="個別サポートのイメージ" class="w-full h-48 object-cover" style="transform: scale(0.85); margin-top: 50px;">
+                        </div>
                         <div class="p-8 text-left">
                             <h3 class="text-xl font-bold mb-3 text-heading card-heading-underline">一人ひとりに寄り添う<br>個別サポート</h3>
                             <p class="text-base">経験豊富なスタッフがあなたの特性や目標を丁寧にヒアリング。あなただけの支援計画を作成し、日々の業務から将来のステップアップまで、マンツーマンでサポートします。</p>
                         </div>
                     </div>
                     <div class="scroll-reveal bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 0.4s;">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop" alt="多様な仕事のイメージ" class="w-full h-48 object-cover">
+                        <div class="w-full h-48" style="background-color: #d3ece7;">
+                            <img src="./images/like.png" alt="多様な仕事のイメージ" class="w-full h-48 object-contain" style="transform: scale(0.85); margin-top: 50px;">
+                        </div>
                         <div class="p-8 text-left">
                             <h3 class="text-xl font-bold mb-3 card-heading-underline">「好き」や「得意」が見つかる<br>多様な仕事</h3>
                             <p class="text-gray-600">PCを使ったデータ入力やデザイン作業、軽作業など、様々な種類のお仕事をご用意。あなたの興味やスキルに合わせて、やりがいを感じられる業務にチャレンジできます。</p>
                         </div>
                     </div>
                     <div class="scroll-reveal card rounded-xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 0.8s;">
-                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600&auto=format&fit=crop" alt="安心できる環境のイメージ" class="w-full h-48 object-cover">
+                        <div class="w-full h-48" style="background-color: #d3ece7;">
+                            <img src="./images/schedule.png" alt="安心できる環境のイメージ" class="w-full h-48 object-contain" style="transform: scale(0.85); margin-top: 50px;">
+                        </div>
                         <div class="p-8 text-left">
                             <h3 class="text-xl font-bold mb-3 text-heading card-heading-underline">週1日・短時間からでも<br>安心できる環境</h3>
                             <p class="text-base">体調や通院の都合に合わせて、無理のないペースで通所できます。静かで落ち着いた作業スペースや休憩室も完備。まずは「ここにいる」ことから始めましょう。</p>
@@ -486,7 +483,7 @@
                     <!-- 悩み 1 & 2 -->
                     <div class="max-w-5xl mx-auto md:flex items-center justify-center gap-8">
                         <div class="flex-shrink-0 mb-8 md:mb-0 text-center">
-                            <img src="https://placehold.co/250x250/e0e7ff/4338ca?text=悩む人" alt="悩みを抱える人のイラスト" class="rounded-full w-40 h-40 md:w-56 md:h-56 mx-auto">
+                            <img src="./images/anxiety_1.png" alt="悩みを抱える人のイラスト" class="rounded-full w-40 h-40 md:w-56 md:h-56 mx-auto object-cover scale-125">
                         </div>
                         <div class="w-full md:w-1/2 space-y-6">
                             <div class="scroll-reveal speech-bubble speech-bubble-left p-5">
@@ -500,7 +497,7 @@
                     <!-- 悩み 3 & 4 -->
                     <div class="max-w-5xl mx-auto md:flex flex-row-reverse items-center justify-center gap-8">
                         <div class="flex-shrink-0 mb-8 md:mb-0 text-center">
-                            <img src="https://placehold.co/250x250/e0e7ff/4338ca?text=考える人" alt="考える人のイラスト" class="rounded-full w-40 h-40 md:w-56 md:h-56 mx-auto">
+                            <img src="./images/anxiety_2.png" alt="考える人のイラスト" class="rounded-full w-40 h-40 md:w-56 md:h-56 mx-auto object-cover scale-125">
                         </div>
                         <div class="w-full md:w-1/2 space-y-6">
                             <div class="scroll-reveal speech-bubble speech-bubble-right p-5">
@@ -652,17 +649,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== ヒーローエリアのスライドショー機能 =====
-            const heroImages = document.querySelectorAll('.hero-image');
-            let currentImageIndex = 0;
-            setInterval(() => {
-                heroImages[currentImageIndex].classList.remove('opacity-100');
-                heroImages[currentImageIndex].classList.add('opacity-0');
-                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-                heroImages[currentImageIndex].classList.remove('opacity-0');
-                heroImages[currentImageIndex].classList.add('opacity-100');
-            }, 7000); // 7秒ごとに切り替え
-
             // ===== キャッチコピーのアニメーション機能 =====
             const mainCatchphrase = "<span class=\"text-accent\">ココ</span>から始まる、私らしい働き方。";
             const subCatchphrase = "あなたのペースを大切にする就労継続支援B型事業所";
@@ -681,7 +667,7 @@
                 }, 500);
             }
             animateText(mainEl, mainCatchphrase);
-            setTimeout(() => animateText(subEl, subCatchphrase), mainCatchphrase.length * 50 + 1000);
+            setTimeout(() => animateText(subEl, subCatchphrase), 300);
 
 
             // ===== モバイルメニューの開閉機能 =====

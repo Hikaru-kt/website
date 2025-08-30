@@ -62,6 +62,9 @@
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
+            
+            /* タイトル画像オーバーレイ */
+            --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
         }
         
         /* パターン2: Fresh Lime Green - 爽やかで安心感と成長をイメージする自然な緑系配色 */
@@ -102,6 +105,9 @@
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
+            
+            /* タイトル画像オーバーレイ */
+            --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
         }
         
         /* パターン3: Sunrise Horizon - 朝日の温かさと海の爽やかさをイメージした配色 */
@@ -142,6 +148,9 @@
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
+            
+            /* タイトル画像オーバーレイ */
+            --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
         }
         
         /* カスタムスタイル */
@@ -298,10 +307,11 @@
 
     <main class="pt-16">
         <!-- ===== ページヘッダー ===== -->
-        <section class="relative h-44 md:h-56 w-full bg-slate-800">
+        <section class="relative h-44 md:h-56 w-full">
             <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1920&auto=format&fit=crop" alt="仕事のイメージ" class="w-full h-full object-cover opacity-30">
+                <img src="./images/work.png" alt="仕事のイメージ" class="w-full h-full object-cover">
             </div>
+            <div class="absolute inset-0" style="background: var(--overlay-gradient);"></div>
             <div class="absolute inset-0 flex items-center justify-center">
                 <h1 class="text-4xl md:text-5xl font-black text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">仕事について</h1>
             </div>

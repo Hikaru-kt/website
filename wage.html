@@ -27,6 +27,7 @@
             --primary-700: #057876;  /* アクティブ/キービジュアルの締め色 */
 
             /* Accent（レモンイエロー） */
+            --accent-100: #FFFBEB;   /* とても薄いレモン: 背景用 */
             --accent-400: #FCEDB4;   /* やさしい注意喚起・バッジ背景 */
             --accent-500: #F8D92E;   /* CTAの強調、ハイライト */
 
@@ -62,6 +63,9 @@
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
+            
+            /* タイトル画像オーバーレイ */
+            --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
         }
         
         /* パターン2: Fresh Lime Green - 爽やかで安心感と成長をイメージする自然な緑系配色 */
@@ -104,6 +108,9 @@
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
+            
+            /* タイトル画像オーバーレイ */
+            --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
         }
         
         /* パターン3: Sunrise Horizon - 朝日の温かさと海の爽やかさをイメージした配色 */
@@ -145,6 +152,9 @@
             --bg-green-600: #16a34a;     /* 緑ボタンホバー用 */
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
+            
+            /* タイトル画像オーバーレイ */
+            --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
         }
         
         /* カスタムスタイル */
@@ -198,6 +208,7 @@
         
         .border-base { border-color: var(--border); }
         .border-accent-100 { border-color: var(--accent-100); }
+        .border-accent-400 { border-color: var(--accent-400); }
         .shadow-base { box-shadow: 0 4px 6px var(--shadow); }
         
         /* ヘッダー */
@@ -302,10 +313,11 @@
 
     <main class="pt-16">
         <!-- ===== ページヘッダー ===== -->
-        <section class="relative h-44 md:h-56 w-full bg-slate-800">
+        <section class="relative h-44 md:h-56 w-full">
             <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1920&auto=format&fit=crop" alt="工賃のイメージ" class="w-full h-full object-cover opacity-30">
+                <img src="./images/wage.png" alt="工賃のイメージ" class="w-full h-full object-cover">
             </div>
+            <div class="absolute inset-0" style="background: var(--overlay-gradient);"></div>
             <div class="absolute inset-0 flex items-center justify-center">
                 <h1 class="text-4xl md:text-5xl font-black text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">工賃について</h1>
             </div>
@@ -315,7 +327,7 @@
         <section class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center">
-                    <h2 class="inline-block text-3xl md:text-4xl font-bold text-slate-800 pb-2 border-b-4 border-accent-100">業界トップクラスの工賃で、<br class="md:hidden"><span class="text-amber-500 font-black">あなたの頑張り</span>に応えます。</h2>
+                    <h2 class="inline-block text-3xl md:text-4xl font-bold text-slate-800 pb-2 border-b-4 border-accent-400">業界トップクラスの工賃で、<br class="md:hidden"><span class="text-amber-500 font-black">あなたの頑張り</span>に応えます。</h2>
                     <p class="text-slate-600 mt-8 mb-16 max-w-2xl mx-auto">私たちは、利用者の皆様の経済的な自立も重要な目標の一つと考えています。<br>ネットショップ運営で得た利益を工賃として適切に還元することで、<br>仕事へのやりがいと生活の安定をサポートします。</p>
                 </div>
                 

@@ -63,6 +63,7 @@
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
             --bg-card-header: #d3ece7;   /* カードヘッダー背景（薄いミントグリーン） */
+            --bg-hero: #ddfaf0;          /* ヒーローエリア背景（淡いミントグリーン） */
             
             /* タイトル画像オーバーレイ */
             --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
@@ -114,6 +115,7 @@
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
             --bg-card-header: #d3ece7;   /* カードヘッダー背景（薄いミントグリーン） */
+            --bg-hero: #ddfaf0;          /* ヒーローエリア背景（淡いミントグリーン） */
             
             /* タイトル画像オーバーレイ */
             --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
@@ -164,6 +166,7 @@
             --bg-hover-light: #f1f5f9;   /* ホバー時の薄い背景 */
             --text-amber-500: #F59E0B;    /* アンバー500: ハイライトテキスト用 */
             --bg-card-header: #d3ece7;   /* カードヘッダー背景（薄いミントグリーン） */
+            --bg-hero: #ddfaf0;          /* ヒーローエリア背景（淡いミントグリーン） */
             
             /* タイトル画像オーバーレイ */
             --overlay-gradient: linear-gradient(135deg, rgba(50, 191, 185, 0.85), rgba(30, 168, 162, 0.7));
@@ -230,6 +233,7 @@
         .border-base { border-color: var(--border); }
         .shadow-base { box-shadow: 0 4px 6px var(--shadow); }
         .bg-card-header { background-color: var(--bg-card-header); }
+        .bg-hero { background-color: var(--bg-hero); }
         
         /* セクション背景 */
         section { background-color: var(--bg-base); }
@@ -435,14 +439,26 @@
 
     <main>
         <!-- ===== ヒーローエリア ===== -->
-        <section id="top" class="relative h-screen w-full flex flex-col items-center justify-start text-center text-white overflow-hidden pt-32 md:pt-40">
+        <section id="top" class="relative h-screen w-full flex flex-col items-center justify-start text-center text-white overflow-hidden pt-28 md:pt-36" style="background-color: var(--bg-hero);">
             <div class="absolute top-0 left-0 w-full h-full">
                 <!-- メインビジュアル -->
-                <img src="./images/ChatGPT Image 2025年8月30日 17_53_51.png" alt="ココデザインのメインビジュアル" class="absolute object-cover" style="width: 50%; height: 50%; left: 0; top: 50%; transform: translateY(-50%);">
+                <img src="./images/ChatGPT Image 2025年8月30日 17_53_51.png" alt="ココデザインのメインビジュアル" class="absolute" style="width: 55%; height: auto; left: 0; bottom: 0;">
             </div>
             <div id="catchphrase-container" class="relative z-10 px-4">
                 <h1 id="main-catchphrase" class="text-4xl md:text-6xl font-black mb-4 leading-tight" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);"></h1>
                 <p id="sub-catchphrase" class="text-lg md:text-2xl font-light" style="color: var(--primary-700);"></p>
+            </div>
+            <!-- 特徴ポイント -->
+            <div class="absolute z-10 flex flex-col gap-8" style="right: 12%; top: 65%; transform: translateY(-50%);">
+                <div class="bg-white rounded-xl px-12 py-8 shadow-xl" style="background-color: var(--accent-400);">
+                    <p class="font-bold text-3xl" style="color: var(--text-heading);">業界トップクラスの高工賃</p>
+                </div>
+                <div class="bg-white rounded-xl px-12 py-8 shadow-xl" style="background-color: var(--accent-400);">
+                    <p class="font-bold text-3xl" style="color: var(--text-heading);">柔軟な働き方</p>
+                </div>
+                <div class="bg-white rounded-xl px-12 py-8 shadow-xl" style="background-color: var(--accent-400);">
+                    <p class="font-bold text-3xl" style="color: var(--text-heading);">ネットショップ運営が学べる</p>
+                </div>
             </div>
         </section>
 

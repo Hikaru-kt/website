@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for file in work.html flow.html wage.html access.html faq.html)",
+      "Bash(do grep -l \"favicon\" \"$file\")",
+      "Bash(echo:*)",
+      "Bash(done)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

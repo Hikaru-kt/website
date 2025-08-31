@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ココデザイン - あなたのペースで、新しい一歩を。 | 就労継続支援B型事業所</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./images/ココデザイン_favicon.png">
+    
     <!-- Tailwind CSSの読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -180,6 +183,21 @@
             scroll-behavior: smooth;
             background-color: var(--bg-base);
             color: var(--text-base);
+        }
+        
+        /* ヒーローエリアのフェードインアニメーション */
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-fade-in {
+            animation: heroFadeIn 1.5s ease-out forwards;
         }
         
         /* CSS変数を使用したカスタムクラス */
@@ -439,7 +457,7 @@
 
     <main>
         <!-- ===== ヒーローエリア ===== -->
-        <section id="top" class="relative h-screen w-full flex flex-col items-center justify-start text-center text-white overflow-hidden pt-28 md:pt-36" style="background-color: var(--bg-hero);">
+        <section id="top" class="relative h-screen w-full flex flex-col items-center justify-start text-center text-white overflow-hidden pt-28 md:pt-36 hero-fade-in" style="background-color: var(--bg-hero);">
             <div class="absolute top-0 left-0 w-full h-full">
                 <!-- メインビジュアル -->
                 <img src="./images/ChatGPT Image 2025年8月30日 17_53_51.png" alt="ココデザインのメインビジュアル" class="absolute" style="width: 55%; height: auto; left: 0; bottom: 0;">
@@ -544,7 +562,7 @@
         <!-- ===== 解決策 ===== -->
         <section id="solution" class="py-24 bg-primary-500 text-inverse">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">そのお悩み、<br class="md:hidden"><span class="text-primary-400 font-black">ココデザイン</span>が解決します！</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">そのお悩み、<br class="md:hidden"><span class="text-accent font-black">ココデザイン</span>が解決します！</h2>
                 <p class="mb-16 max-w-2xl mx-auto text-inverse">私たちは、あなたの「働きやすさ」と「未来」を本気で考え、<br>他にはない独自のサポート体制を整えています。</p>
                 
                 <div class="relative max-w-5xl mx-auto">

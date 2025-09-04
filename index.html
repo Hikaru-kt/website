@@ -458,24 +458,24 @@
     <main>
         <!-- ===== ヒーローエリア ===== -->
         <section id="top" class="relative h-screen w-full flex flex-col items-center justify-start text-center text-white overflow-hidden pt-28 md:pt-36 hero-fade-in" style="background-color: var(--bg-hero);">
-            <div class="absolute top-0 left-0 w-full h-full">
-                <!-- メインビジュアル -->
-                <img src="./images/ChatGPT Image 2025年8月30日 17_53_51.png" alt="ココデザインのメインビジュアル" class="absolute" style="width: 55%; height: auto; left: 0; bottom: 0;">
+            <!-- メインビジュアル（モバイルでは中央下寄り、デスクトップでは左） -->
+            <div class="absolute top-[55%] left-0 w-full -translate-y-1/2 md:top-0 md:left-0 md:w-full md:h-full md:translate-y-0">
+                <img src="./images/ChatGPT Image 2025年8月30日 17_53_51.png" alt="ココデザインのメインビジュアル" class="relative md:absolute w-full md:w-[55%] h-auto md:h-auto md:bottom-0 md:left-0">
             </div>
             <div id="catchphrase-container" class="relative z-10 px-4">
                 <h1 id="main-catchphrase" class="text-4xl md:text-6xl font-black mb-4 leading-tight" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);"></h1>
                 <p id="sub-catchphrase" class="text-lg md:text-2xl font-light" style="color: var(--primary-700);"></p>
             </div>
-            <!-- 特徴ポイント -->
-            <div class="absolute z-10 flex flex-col gap-8" style="right: 12%; top: 65%; transform: translateY(-50%);">
-                <div class="bg-white rounded-xl px-12 py-8 shadow-xl" style="background-color: var(--accent-400);">
-                    <p class="font-bold text-3xl" style="color: var(--text-heading);">業界トップクラスの高工賃</p>
+            <!-- 特徴ポイント（モバイルでは下、デスクトップでは右） -->
+            <div class="absolute z-10 flex flex-col gap-3 md:gap-8 bottom-[5%] left-1/2 transform -translate-x-1/2 md:left-auto md:right-[12%] md:top-[65%] md:bottom-auto md:transform md:-translate-y-1/2 md:translate-x-0">
+                <div class="bg-white rounded-lg md:rounded-xl px-4 py-3 md:px-12 md:py-8 shadow-lg md:shadow-xl" style="background-color: var(--accent-400);">
+                    <p class="font-bold text-sm md:text-3xl whitespace-nowrap" style="color: var(--text-heading);">業界トップクラスの高工賃</p>
                 </div>
-                <div class="bg-white rounded-xl px-12 py-8 shadow-xl" style="background-color: var(--accent-400);">
-                    <p class="font-bold text-3xl" style="color: var(--text-heading);">柔軟な働き方</p>
+                <div class="bg-white rounded-lg md:rounded-xl px-4 py-3 md:px-12 md:py-8 shadow-lg md:shadow-xl" style="background-color: var(--accent-400);">
+                    <p class="font-bold text-sm md:text-3xl whitespace-nowrap" style="color: var(--text-heading);">柔軟な働き方</p>
                 </div>
-                <div class="bg-white rounded-xl px-12 py-8 shadow-xl" style="background-color: var(--accent-400);">
-                    <p class="font-bold text-3xl" style="color: var(--text-heading);">ネットショップ運営が学べる</p>
+                <div class="bg-white rounded-lg md:rounded-xl px-4 py-3 md:px-12 md:py-8 shadow-lg md:shadow-xl" style="background-color: var(--accent-400);">
+                    <p class="font-bold text-sm md:text-3xl whitespace-nowrap" style="color: var(--text-heading);">ネットショップ運営が学べる</p>
                 </div>
             </div>
         </section>
@@ -483,7 +483,7 @@
         <!-- ===== 支援の方針 ===== -->
         <section id="policy" class="py-24 section-elevated">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-heading">あなたの「働きたい」を、<br class="md:hidden"><span class="text-primary font-black">3つの安心</span>で支えます。</h2>
+                <h2 class="text-2xl md:text-4xl font-bold mb-4 text-heading">あなたの「働きたい」を<br class="md:hidden"><span class="text-primary font-black">3つの安心</span>で支えます。</h2>
                 <p class="text-muted mb-16 max-w-2xl mx-auto">ココデザインは、一人ひとりの個性とペースを尊重します。<br>焦らず、無理なく、あなたらしい一歩を踏み出すための環境がここにあります。</p>
                 <div class="grid md:grid-cols-3 gap-10">
                     <div class="scroll-reveal card rounded-xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
@@ -500,7 +500,7 @@
                             <img src="./images/like.png" alt="多様な仕事のイメージ" class="w-full h-48 object-contain" style="transform: scale(0.85); margin-top: 50px;">
                         </div>
                         <div class="p-8 text-left">
-                            <h3 class="text-xl font-bold mb-3 card-heading-underline">「好き」や「得意」が見つかる<br>多様な仕事</h3>
+                            <h3 class="text-xl font-bold mb-3 card-heading-underline">「好き」や「得意」が<br class="md:hidden">見つかる<br class="hidden md:inline">多様な仕事</h3>
                             <p class="text-gray-600">PCを使ったデータ入力やデザイン作業、軽作業など、様々な種類のお仕事をご用意。あなたの興味やスキルに合わせて、やりがいを感じられる業務にチャレンジできます。</p>
                         </div>
                     </div>
@@ -521,7 +521,7 @@
         <section id="worries" class="py-24 bg-medium-gray">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">こんな<span class="text-primary font-black">お悩み</span>ありませんか？</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">こんな<br class="md:hidden"><span class="text-primary font-black">お悩み</span>ありませんか？</h2>
                     <p class="text-gray-600 max-w-2xl mx-auto">
                         一つでも当てはまったら、ぜひ一度ご相談ください。
                     </p>
@@ -562,7 +562,7 @@
         <!-- ===== 解決策 ===== -->
         <section id="solution" class="py-24 bg-primary-500 text-inverse">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">そのお悩み、<br class="md:hidden"><span class="text-accent font-black">ココデザイン</span>が解決します！</h2>
+                <h2 class="text-2xl md:text-4xl font-bold mb-4">そのお悩み、<br><span class="text-accent font-black">ココデザイン</span>が<br class="md:hidden">解決します！</h2>
                 <p class="mb-16 max-w-2xl mx-auto text-inverse">私たちは、あなたの「働きやすさ」と「未来」を本気で考え、<br>他にはない独自のサポート体制を整えています。</p>
                 
                 <div class="relative max-w-5xl mx-auto">
@@ -577,7 +577,7 @@
                                         <img src="./images/solution_1.png" alt="高工賃のイメージ" class="object-contain" style="width: 60%; height: 60%;">
                                     </div>
                                     <div class="p-8 md:p-12 flex flex-col justify-center text-left">
-                                        <h3 class="text-3xl lg:text-4xl font-black text-card1-heading mb-4">業界トップクラスの高工賃</h3>
+                                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-black text-card1-heading mb-4">業界トップクラスの<br class="md:hidden">高工賃</h3>
                                         <p class="text-base mb-2 text-lg">時給単価<span class="text-4xl lg:text-5xl font-black text-heading">350</span><span class="font-bold text-heading">円</span></p>
                                         <p class="text-base mb-4 text-lg">月間<span class="text-4xl lg:text-5xl font-black text-heading">35,000</span><span class="font-bold text-heading">円以上</span>も可能！<br><span class="text-sm">※1日5時間、月20日就業の場合</span></p>
                                         <p class="font-bold text-muted">千葉県の令和5年平均20,932円の150%以上！</p>
@@ -590,7 +590,7 @@
                                         <img src="./images/solution_2.png" alt="働きやすさのイメージ" class="object-contain" style="width: 80%; height: 80%;">
                                     </div>
                                     <div class="p-8 md:p-12 flex flex-col justify-center text-left">
-                                        <h3 class="text-3xl lg:text-4xl font-black text-card2-heading mb-4">駅チカ好立地 ＆ 在宅OK</h3>
+                                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-black text-card2-heading mb-4">駅チカ好立地<br class="md:hidden">＆ 在宅OK</h3>
                                         <p class="text-base text-lg">船橋市内の駅から<span class="font-bold text-heading">徒歩5分</span>圏内。毎日の通勤ストレスを軽減します。体調に合わせて<span class="font-bold text-heading">在宅作業も可能</span>です。</p>
                                     </div>
                                 </div>
@@ -601,7 +601,7 @@
                                         <img src="./images/like.png" alt="楽しい作業のイメージ" class="object-contain" style="width: 80%; height: 80%;">
                                     </div>
                                     <div class="p-8 md:p-12 flex flex-col justify-center text-left">
-                                        <h3 class="text-3xl lg:text-4xl font-black text-card3-heading mb-4">好きを仕事にできる</h3>
+                                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-black text-card3-heading mb-4">好きを<br class="md:hidden">仕事にできる</h3>
                                         <p class="text-base text-lg">扱う商品は<span class="font-bold text-heading">中古ゲーム機</span>や<span class="font-bold text-heading">トレカ</span>など親しみやすいものばかり。あなたの「好き」が仕事のモチベーションに繋がります。</p>
                                     </div>
                                 </div>
@@ -612,7 +612,7 @@
                                         <img src="./images/solution_4.png" alt="自立支援のイメージ" class="object-contain" style="width: 80%; height: 80%;">
                                     </div>
                                     <div class="p-8 md:p-12 flex flex-col justify-center text-left">
-                                        <h3 class="text-3xl lg:text-4xl font-black text-card4-heading mb-4">ネットショップ運営で<br>「稼ぐ力」を養う</h3>
+                                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-black text-card4-heading mb-4"><span class="text-xl md:text-3xl lg:text-4xl">ネットショップ運営で</span><br class="md:hidden">「稼ぐ力」を養う</h3>
                                         <p class="text-base text-lg">単なる作業で終わらせない。商品知識、PCスキル、マーケティング思考など、<span class="font-bold text-heading">実践的なスキル</span>を身につけ、あなたの自立を全力でサポートします。</p>
                                     </div>
                                 </div>
@@ -669,7 +669,7 @@
         <!-- ===== 見学誘導バナー ===== -->
         <section id="tour-banner" class="bg-primary-gradient text-white">
             <div class="container mx-auto px-6 py-20 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">まずは、事業所の雰囲気を<br class="md:hidden"><span class="font-black">見に来ませんか？</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">まずは、<br class="md:hidden">事業所の雰囲気を<br class="md:hidden"><span class="font-black">見に来ませんか？</span></h2>
                 <p class="text-lg mb-8">「どんな場所なんだろう？」「自分に合うかな？」<br>その不安、見学で解消しましょう。</p>
                 <a href="https://lin.ee/SpfieOE" class="inline-block bg-accent-400 text-dark font-bold py-5 px-16 rounded-full text-xl hover:bg-accent transition-all duration-300 shadow-lg transform hover:shadow-xl animate-noticeable-bounce">
                     見学はこちら
@@ -683,10 +683,10 @@
         <div class="container mx-auto px-6 py-10">
             <div class="text-center mb-8">
                 <a href="./index.html" class="flex items-center justify-center">
-                    <img src="./images/ココデザイン_ロゴ_rev.png" alt="ココデザイン" class="h-18 md:h-20 w-auto brightness-0 invert">
+                    <img src="./images/ココデザイン_ロゴ_rev.png" alt="ココデザイン" class="h-14 md:h-20 w-auto brightness-0 invert">
                 </a>
                 <p class="opacity-70 text-sm mt-2">
-                    〒123-4567 東京都渋谷区〇〇 1-2-3 | TEL: 03-1234-5678
+                    〒123-4567 東京都渋谷区〇〇 1-2-3 <span class="hidden md:inline">|</span><br class="md:hidden"> TEL: 03-1234-5678
                 </p>
             </div>
             <div class="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-8">
@@ -706,7 +706,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // ===== キャッチコピーのアニメーション機能 =====
             const mainCatchphrase = "<span class=\"text-accent\">ココ</span>から始まる、私らしい働き方。";
-            const subCatchphrase = "あなたのペースを大切にする就労継続支援B型事業所";
+            const subCatchphrase = "あなたのペースを大切にする<br class=\"md:hidden\">就労継続支援B型事業所";
             const mainEl = document.getElementById('main-catchphrase');
             const subEl = document.getElementById('sub-catchphrase');
 

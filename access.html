@@ -229,6 +229,16 @@
             background-color: var(--bg-dark);
             color: var(--text-inverse);
         }
+        
+        /* Google Mapの高さ調整 */
+        .map-container {
+            height: 600px;
+        }
+        @media (min-width: 768px) {
+            .map-container {
+                height: 400px;
+            }
+        }
 
         /* ヘッダーのナビゲーションリンクのホバーエフェクト */
         .nav-link {
@@ -350,8 +360,8 @@
                         </div>
                     </div>
                     <!-- 右側：Googleマップ -->
-                    <div class="w-full h-full min-h-[400px]">
-                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.549882570025!2d139.9890196762395!3d35.71261622765217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018876336183a69%3A0x353297a5a38a723!2z5ZyL5qmL6aeF!5e0!3m2!1sja!2sjp!4v1723798993139!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-xl shadow-lg"></iframe>
+                    <div class="w-full map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.549882570025!2d139.9890196762395!3d35.71261622765217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018876336183a69%3A0x353297a5a38a723!2z5ZyL5qmL6aeF!5e0!3m2!1sja!2sjp!4v1723798993139!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-xl shadow-lg"></iframe>
                     </div>
                 </div>
             </div>
